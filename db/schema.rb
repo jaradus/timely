@@ -11,7 +11,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140201003228) do
+ActiveRecord::Schema.define(:version => 20140201010533) do
+
+  create_table "dislikes", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.float    "rating"
+    t.string   "address"
+    t.date     "disliked_date"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "keywords", :force => true do |t|
+    t.string   "keyword"
+    t.string   "period_of_time"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "keywords_users", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "keyword_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "likes", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.float    "rating"
+    t.string   "address"
+    t.date     "liked_date"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -10,5 +10,11 @@ class User < ActiveRecord::Base
 
   # Custom Items
   attr_accessible :name
+
+  has_many :dislikes, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
+  
+  has_many :keywords_users, :dependent => :destroy
+  has_many :keywords
   
 end
