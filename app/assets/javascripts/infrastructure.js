@@ -32,8 +32,8 @@ var app = app || {
 // ===============================
 var getLocation = function() {
   navigator.geolocation.getCurrentPosition(function(position) {
-    app.latitude = position.coords.latitude
-    app.longitude = position.coords.longitude
+    app.latitude = position.coords.latitude;
+    app.longitude = position.coords.longitude;
   })
   console.log("Geolocation checked")
 }
@@ -42,7 +42,7 @@ var getLocation = function() {
 // ===============================================
 var setRender = function() {
   // Calculated window width, then sets which render is applicable for the client's browser
-  window_width = document.documentElement.clientWidth
+  var window_width = document.documentElement.clientWidth
     
   if (window_width > 640) {
     mainView.desktopRender();
