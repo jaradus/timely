@@ -20,6 +20,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'yelpster'
+
 gem 'jquery-rails'
 
 # Gems used in development only
