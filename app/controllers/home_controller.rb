@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     params[:latitude]
     params[:longitude]
 
+    # Scott and Julie: Yelp API call goes here
     yelp_list = 
 
     render json: yelp_list
