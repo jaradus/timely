@@ -23,7 +23,8 @@ var app = app || {
     }
 
     getLocation();
-    setRender();
+    // setRender() renders a page depending upon the browser screen. Keep commented out to load one main page.
+    // setRender();
     console.log("Page rendered")
   }
 }
