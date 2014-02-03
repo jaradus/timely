@@ -12,11 +12,14 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-    <main role="main">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-       <%= render 'layouts/messages' %>
-       <%= yield %>
-    </main>
+    <!-- div containter class is intitial condition for bootstrap -->
+    <div class="containter"> 
+      <main role="main">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+         <%= render 'layouts/messages' %>
+         <%= yield %>
+      </main>
+    </div>
   </body>
 </html>
