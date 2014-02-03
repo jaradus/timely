@@ -17,8 +17,8 @@ var app = app || {
     var self = this;
     this.latitude
     this.longitude
-    this.coordinates = {latitude: undefined,
-                        longitude: undefined}
+    // loca_time is set by time_check.js
+    this.local_time
     this.elements = {
       $location: $('#location'),
       $device: $('#device'),
@@ -26,9 +26,11 @@ var app = app || {
     }
 
     getLocation();
+    this.local_time = timeCheck();
     // setRender() renders a page depending upon the browser screen. Keep commented out to load one main page.
     // setRender();
-    console.log("Page rendered")
+
+    console.log("Page rendered");
   }
 }
 
@@ -40,11 +42,10 @@ var getLocation = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       app.latitude = position.coords.latitude;
       app.longitude = position.coords.longitude;
-      app.coordinates = {latitude: app.latitude, 
-                     longitude: app.longitude
-                    };
-      sendLocation(app.coordinates);
-    })
+      console.log("Latitude "+app.latitude);
+      console.log("Longitude "+app.longitude);
+      sendLocation(app.latitude, app.longitude, app.local_time);
+      })
   } else {
     app.elements.$alert.append("Geolocation is not supported by this browser.")
   }
@@ -52,14 +53,21 @@ var getLocation = function() {
   console.log("Geolocation checked");
 }
 
-var sendLocation = function(coordinates) {
-  console.log(coordinates);
+var sendLocation = function(lat, lon, time) {
+  console.log(lat+", "+lon+", "+time);
+  params = {
+            latitude: lat,
+            longitude: lon,
+            local_time: time
+            };
+
+  console.log(params)
 
   $.ajax({
     url: '/api_call',
     method: 'post',
     dataType: 'json',
-    data: coordinates,
+    data: params,
     success: function(data){
       return data;
     }

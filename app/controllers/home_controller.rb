@@ -6,8 +6,11 @@ class HomeController < ApplicationController
 
 
   def api_call
-    params[:latitude]
-    params[:longitude]
+    latitude   = params[:latitude]
+    longitude  = params[:longitude]
+    local_time = params[:local_time]
+
+    keywords   = Keyword.find_all_by_period_of_time(period)
 
     # Scott and Julie: Yelp API call goes here
     yelp_list = 
