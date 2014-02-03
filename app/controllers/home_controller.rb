@@ -1,10 +1,18 @@
 class HomeController < ApplicationController
 
   def index
-		respond_to do |format|
-			format.html
-			#format.json {render json: Model.all.to_json}
-    end
+
+  end
+
+
+  def api_call
+    params[:latitude]
+    params[:longitude]
+
+    yelp_list = 
+
+    render json: yelp_list
+
   end
 
 end
