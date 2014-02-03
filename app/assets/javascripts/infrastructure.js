@@ -17,9 +17,12 @@ var app = app || {
     var self = this;
     this.latitude
     this.longitude
+    this.coordinates = {latitude: undefined,
+                        longitude: undefined}
     this.elements = {
       $location: $('#location'),
-      $device: $('#device')
+      $device: $('#device'),
+      $alert: $('.alert')
     }
 
     getLocation();
@@ -32,42 +35,66 @@ var app = app || {
 // [2] Gets the browser's location
 // ===============================
 var getLocation = function() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    app.latitude = position.coords.latitude;
-    app.longitude = position.coords.longitude;
-  })
-  console.log("Geolocation checked")
-}
-
-// [3] Decides which version of the page to render
-// ===============================================
-var setRender = function() {
-  // Calculated window width, then sets which render is applicable for the client's browser
-  var window_width = document.documentElement.clientWidth
-    
-  if (window_width > 640) {
-    mainView.desktopRender();
+  if (navigator.geolocation)
+  {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      app.latitude = position.coords.latitude;
+      app.longitude = position.coords.longitude;
+      app.coordinates = {latitude: app.latitude, 
+                     longitude: app.longitude
+                    };
+      sendLocation(app.coordinates);
+    })
   } else {
-    mainView.mobileRender();
-  }
-  console.log("Appropriate device rendered")
-}
-
-// [4] Renders the main page
-// =========================
-var mainView = {
-
-  desktopRender: function() {
-    app.elements.$device.append("You're a big screen!");
-    app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
-  },
-
-  mobileRender: function() {
-    app.elements.$device.append("You're a mobile device!");
-    app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
+    app.elements.$alert.append("Geolocation is not supported by this browser.")
   }
 
+  console.log("Geolocation checked");
 }
+
+var sendLocation = function(coordinates) {
+  console.log(coordinates);
+
+  $.ajax({
+    url: '/api_call',
+    method: 'post',
+    dataType: 'json',
+    data: coordinates,
+    success: function(data){
+      return data;
+    }
+  })
+}
+
+// // [3] Decides which version of the page to render
+// // ===============================================
+// var setRender = function() {
+//   // Calculated window width, then sets which render is applicable for the client's browser
+//   var window_width = document.documentElement.clientWidth
+    
+//   if (window_width > 640) {
+//     mainView.desktopRender();
+//   } else {
+//     mainView.mobileRender();
+//   }
+//   console.log("Appropriate device rendered")
+// }
+
+// // [4] Renders the main page
+// // =========================
+// var mainView = {
+
+//   desktopRender: function() {
+//     app.elements.$device.append("You're a big screen!");
+//     app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
+//   },
+
+//   mobileRender: function() {
+//     app.elements.$device.append("You're a mobile device!");
+//     app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
+//   }
+
+// }
 
 // [5] When File has Completed Loading
 // ===================================

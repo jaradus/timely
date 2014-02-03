@@ -3,10 +3,19 @@ require 'yelp_api' # in the lib/assets folder
 class HomeController < ApplicationController
 
   def index
-		respond_to do |format|
-			format.html
-			#format.json {render json: Model.all.to_json}
-    end
+
+  end
+
+
+  def api_call
+    params[:latitude]
+    params[:longitude]
+
+    # Scott and Julie: Yelp API call goes here
+    yelp_list = 
+
+    render json: yelp_list
+
   end
 
 	#NOTE: THERE IS NO ROUTE FOR THIS METHOD
