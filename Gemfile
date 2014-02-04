@@ -24,6 +24,8 @@ gem 'yelpster'
 
 gem 'jquery-rails'
 
+gem 'faker'
+
 # Gems used in development only
 group :development do
   gem 'better_errors'
