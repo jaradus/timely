@@ -59,20 +59,27 @@ main {
   width: 500px;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
-ul{
+ul {
   list-style-type: none;
+  display: center;
 }
 
-li{
+li {
   font-family: 'Nunito', sans-serif;
+  text-align: center;
 }
 
-li.name{
-  font-size: 1.3em;
+li.name {
+  font-size: 1.6em;
+}
+
+.site-container {
+  margin: 0 auto;
+  width: 100%;
 }
 
 .tab-content {
