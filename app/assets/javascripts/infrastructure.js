@@ -1,4 +1,3 @@
-
 // TABLE OF CONTENTS
 // -----------------
 // [1] Page elements
@@ -55,7 +54,8 @@ var getLocation = function() {
 
 var sendLocation = function(lat, lon, time) {
   console.log(lat+", "+lon+", "+time);
-  params = {
+  
+  var params = {
             latitude: lat,
             longitude: lon,
             local_time: time
@@ -76,7 +76,7 @@ var sendUserData = function sendUserData(params) {
       console.log("Returned data goes here:");
       console.log(data);
 
-      list_data = data;
+      var list_data = data;
       //testing to see if object gets passed to renderYelpItem function
       data.forEach(function(yelp_item_attr) {
         var ul = renderYelpItem(yelp_item_attr);
