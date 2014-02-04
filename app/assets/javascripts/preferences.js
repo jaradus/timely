@@ -2,11 +2,11 @@ var pref = {
 
   initialize: function(){
     pref.elements = {
-      $morning    : $('#morning'),
-      $noon       : $('#noon'),
-      $afternoon  : $('#afternoon'),
-      $evening    : $('#evening'),
-      $night      : $('#night')
+      $morning    : $('#morningTab'),
+      $noon       : $('#noonTab'),
+      $afternoon  : $('#afternoonTab'),
+      $evening    : $('#eveningTab'),
+      $night      : $('#nightTab')
     }
 
     pref.nightwatch()
@@ -17,7 +17,7 @@ var pref = {
     $.each(pref.elements, function(value){
       this.click(function (e) {
           e.preventDefault();
-          $(this).tab('show');
+          $(this):last.tab('show');
           $(this).addClass('active');
         });
     })
