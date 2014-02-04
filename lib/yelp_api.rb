@@ -16,17 +16,26 @@ class YelpApi
 	MAX_RESULTS = 3
 
 	class YelpSite 
-		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
+#I don't think this is needed anymore
+#		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
-		def initialize(name, location, city, zip, state_code, rating, url, little_stars_url, big_stars_url)
+		# Create the YelpSite object with associated data
+		def initialize(
+			name, phone_num, cross_streets,
+			address, city, zip, state_code, 
+			rating, 
+			url, little_stars_url, medium_stars_url, big_stars_url)
 			@name 				= name
-			@location 			= location
+			@phone_num			= phone_num
+			@cross_streets		= cross_streets
+			@location 			= address
 			@city 				= city
 			@zipcode 			= zip
 			@state_code 		= state_code
 			@rating 			= rating
 			@url 				= url
 			@little_stars_url 	= little_stars_url
+			@medium_stars_url 	= medium_stars_url
 			@big_stars_url 		= big_stars_url
 		end
 	end
@@ -80,22 +89,28 @@ class YelpApi
 		# object format 
 		business_array.each do |business|
 			name 			= business["name"]
+			phone_num		= business["display_phone"]
 			address 		= business["location"]["address"][0]
+			cross_streets	= business["location"]["display_address"][1]
 			city 			= business["location"]["city"]
 			zip 			= business["location"]["postal_code"]
 			state_code		= business["location"]["state_code"]
 			rating 			= business["rating"]
 			url 			= business["url"]
 			little_stars_url= business["rating_img_url_small"]
+			medium_stars_url= business["rating_img_url"]
 			big_stars_url	= business["rating_img_url_large"]
 			
 			#Create our own YelpSite data object with 
 			#JUST The data we're interested in
 			siteclassobject = YelpSite.new(
-				name, address, city, zip, state_code,
+				name, phone_num, cross_streets, 
+				address, city, zip, state_code,
 				rating, 
-				url, little_stars_url, big_stars_url
+				url, little_stars_url, medium_stars_url, big_stars_url
 			)
+
+binding.pry			
 			
 			#Put the site object into the site array
 			site_array << siteclassobject
