@@ -10,10 +10,10 @@
   </head>
   <body>
     <header>
-      <%= render 'layouts/navigation' %>
+      <div><%= content_for?(:description) ? yield(:description) : "Timely" %></div>
     </header>
     <!-- div containter class is intitial condition for bootstrap -->
-    <div class="containter"> 
+    <div class="container"> 
       <main role="main">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
