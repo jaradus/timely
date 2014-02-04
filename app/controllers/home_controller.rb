@@ -8,22 +8,25 @@ class HomeController < ApplicationController
 
 
   def api_call
-    latitude   = params[:latitude]
-    longitude  = params[:longitude]
+    latitude   = params[:latitude].to_f
+    longitude  = params[:longitude].to_f
     local_time = params[:local_time]
 
-    keywords   = Keyword.find_all_by_period_of_time(period)
+    results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
 
-    # Scott and Julie: Yelp API call goes here
-    yelp_list = 
+    results.each do |result|
+      puts result.name
+    end
 
-    render json: yelp_list
+# # binding.pry
+
+    render json: results
 
   end
 
 	#NOTE: THERE IS NO ROUTE FOR THIS METHOD
 	def zipsearch(inZipcode)
-		@sites = YelpApi.searchZip(inZipcode)
+		return YelpApi.searchZip(inZipcode)
 	end
 
 	#NOTE: THERE IS NO ROUTE FOR THIS METHOD
@@ -31,7 +34,7 @@ class HomeController < ApplicationController
 	# and an array of keywords eg ["dinner", "chinese"]
 	#40, -70 -- this returns an error that I should handle
 	def lat_lon_keyword_search(inLat, inLon, inKeywords)
-		@sites = YelpApi.searchLatLonKeywords(inLat, inLon, inKeywords)
+		return YelpApi.searchLatLonKeywords(inLat, inLon, inKeywords)
 	end
 
 end
