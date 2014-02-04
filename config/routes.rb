@@ -7,5 +7,7 @@ Timely::Application.routes.draw do
 
   root to: 'home#index'
 
+  get '/scooterTest' => 'home#scooterTest'
+
 
 end
