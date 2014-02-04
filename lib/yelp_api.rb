@@ -17,7 +17,7 @@ class YelpApi
 
 	class YelpSite 
 #I don't think this is needed anymore
-#		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
+		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
 		# Create the YelpSite object with associated data
 		def initialize(
@@ -110,7 +110,7 @@ class YelpApi
 				url, little_stars_url, medium_stars_url, big_stars_url
 			)
 
-binding.pry			
+#binding.pry			
 			
 			#Put the site object into the site array
 			site_array << siteclassobject
