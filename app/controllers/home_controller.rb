@@ -3,7 +3,7 @@ require 'yelp_api' # in the lib/assets folder
 class HomeController < ApplicationController
 
   def index
-
+  	lat_lon_keyword_search(40, -70, ["dinner", "chinese"])
   end
 
 

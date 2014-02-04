@@ -2,8 +2,7 @@ class YelpApi
 	class YelpSite 
 		attr_accessor :cost, :name, :address, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
-		def initialize(cost, name, address, city, zip, rating, url, image_url)
-			@cost = cost
+		def initialize(name, address, city, zip, rating, url, image_url)
 			@name = name
 			@address = address
 			@city = city
@@ -16,6 +15,12 @@ class YelpApi
 		end
 	end
 
+	#NOTE That this method could return two different kinds
+	#of results: an array containing businesses OR it could
+	#return an error, so before you iterate through the 
+	#returned array, MAKE SURE IT IS ONE.  IF IT'S NOT, you
+	#probably want to read the contents to see what kind of
+	#error it is
 	def self.searchLatLonKeywords(inLat, inLon, inKeywords)
 		Yelp.configure(
 			:yws_id          => ENV['YELP_YWSID'],
@@ -24,63 +29,63 @@ class YelpApi
 			:token           => ENV['YELP_TOKEN'],
 			:token_secret    => ENV['YELP_TOKEN_SECRET'])
 
-		 # construct a client instance
-		 client = Yelp::Client.new
+		# construct a client instance
+		client = Yelp::Client.new
 
-		 #include Yelp::V1::Review::Request
-		 include Yelp::V2::Search::Request
+		include Yelp::V2::Search::Request
+
 		 # perform an address/location-based search for cream puffs nearby
-
 		request_hash = GeoPoint.new(
 			:term => inKeywords.join(" "),
 			:latitude => inLat,
 		 	:longitude => inLon
 	 	)		 
 	 	response = client.search(request_hash)
-		 
-#		 request = Location.new(request_hash)
-binding.pry		 
-			site_array = []
-			puts "Calling request with these parameters: " + request_hash.to_s
 
-#			response = client.search(request)
+		site_array = []
 
+		if (response["businesses"] == nil)
+			#The YELP API returned an error, so 
+			#pass that response back up the stack.
+			#The users won't like the error, but it'll
+			#help them debug
+			return response
+		end
 
+		business_array = response["businesses"]
 
-			business_array = response["businesses"]
-#binding.pry
+		# Go through the list of businesses we got back
+		# from the API call and put them into our own
+		# object format 
+		business_array.each do |business|
+			name 			= business["name"]
+			address 		= business["address1"]
+			city 			= business["city"]
+			zip 			= business["zip"]
+			url 			= business["url"]
+			image_url 		= business["rating_img_url_small"]
 
+			#"reviews" key seems to be unavailable in V2
+			#results so I'm removing it
+			#review_array 	= business["reviews"]
+			rating_sum 		= 0
 
-			business_array.each do |business|
-				cost = "$"
-				name = business["name"]
-				address = business["address1"]
-				city = business["city"]
-				zip = business["zip"]
-				url = business["url"]
-
-				image_url = business["rating_img_url_small"]
-
-				review_array = business["reviews"]
-				rating_sum = 0
-
-				siteclassobject = YelpSite.new(
-					cost, name, address, city, 
-					zip, 0, url, image_url)
-				review_array.each do |review|
-					rating_sum += review["rating"]
-					siteclassobject.reviews.push(
-						[review["rating"], 
-						review["text_excerpt"],
-						review["rating_img_url_small"]]
-						)
-				end
-				site_array << siteclassobject
-			end
+			siteclassobject = YelpSite.new(
+				name, address, city, 
+				zip, 0, url, image_url
+			)
+			
+			#Put the site object into the site array
+			site_array << siteclassobject
+		end
 		return site_array
 	end
 
 
+	#PLEASE BE AWARE this method has not been updated
+	# to work with all the changes necessary for the V2
+	# call.  Please do not assume that this call will
+	# work for you if you choose to use it for testing!
 	def self.searchZip(inZip)
 		#def yelp_test_query
 			Yelp.configure(
@@ -114,11 +119,7 @@ binding.pry
 
 			response = client.search(request)
 
-
-
 			business_array = response["businesses"]
-#binding.pry
-
 
 			business_array.each do |business|
 				cost = "$"
@@ -134,7 +135,7 @@ binding.pry
 				rating_sum = 0
 
 				siteclassobject = YelpSite.new(
-					cost, name, address, city, 
+					name, address, city, 
 					zip, 0, url, image_url)
 				review_array.each do |review|
 					rating_sum += review["rating"]
