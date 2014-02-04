@@ -7,10 +7,13 @@ class HomeController < ApplicationController
   end
 
 
+
+
   def api_call
     latitude   = params[:latitude].to_f
     longitude  = params[:longitude].to_f
     local_time = params[:local_time].to_i
+
 
 
     @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
@@ -34,6 +37,17 @@ class HomeController < ApplicationController
 
   end
 
+  def scooterTest
+  	latitude = 40.740091899999996
+	longitude = -73.98969
+
+    @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
+
+
+	binding.pry
+
+  end
+
 	#NOTE: THERE IS NO ROUTE FOR THIS METHOD
 	def zipsearch(inZipcode)
 		return YelpApi.searchZip(inZipcode)
@@ -46,8 +60,6 @@ class HomeController < ApplicationController
 	def lat_lon_keyword_search(inLat, inLon, inKeywords)
 		return YelpApi.searchLatLonKeywords(inLat, inLon, inKeywords)
 	end
-
-end
 
 
 def check_time(local_time)

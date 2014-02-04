@@ -2,7 +2,7 @@ class YelpApi
 	class YelpSite 
 		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
-		def initialize(name, address, city, zip, rating, url, image_url)
+		def initialize(name, location, city, zip, rating, url, image_url)
 			@name = name
 			@location = location
 			@city = city
@@ -42,6 +42,9 @@ class YelpApi
 	 	)		 
 	 	response = client.search(request_hash)
 
+#Scooter: Working on code here--commenting this out to commit
+#binding.pry 
+
 		site_array = []
 
 		if (response["businesses"] == nil)
@@ -59,20 +62,26 @@ class YelpApi
 		# object format 
 		business_array.each do |business|
 			name 			= business["name"]
-			address 		= business["address1"]
-			city 			= business["city"]
-			zip 			= business["zip"]
+			address 		= business["location"]["address"][0]
+
+
+#binding.pry 
+
+
+			city 			= business["location"]["city"]
+			zip 			= business["location"]["postal_code"]
 			url 			= business["url"]
 			image_url 		= business["rating_img_url_small"]
 
 			#"reviews" key seems to be unavailable in V2
 			#results so I'm removing it
 			#review_array 	= business["reviews"]
-			rating_sum 		= 0
+			#rating_sum 		= 0
 
+			rating = business["rating"]
 			siteclassobject = YelpSite.new(
 				name, address, city, 
-				zip, 0, url, image_url
+				zip, rating, url, image_url
 			)
 			
 			#Put the site object into the site array
