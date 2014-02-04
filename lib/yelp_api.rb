@@ -75,7 +75,7 @@ class YelpApi
 			image_url 		= business["rating_img_url_small"]
 			state_code		= business["location"]["state_code"]
 
-binding.pry
+# binding.pry
 
 
 			#"reviews" key seems to be unavailable in V2
