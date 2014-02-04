@@ -47,25 +47,29 @@ class HomeController < ApplicationController
 		return YelpApi.searchLatLonKeywords(inLat, inLon, inKeywords)
 	end
 
+
+
+		#NOTE: THERE IS NO ROUTE FOR THIS METHOD
+	def get_keywords(local_time, user)
+		if local_time.between?(300,1130)
+			return ["breakfast", "bagel", "coffee"]
+		end
+		if local_time.between?(1130,1300)
+			return ["lunch", "burgers", "salads"]
+		end
+		if local_time.between?(1300,1730)
+			return ["coffee", "tea", "crumpets", "petit fours"]
+		end
+		if local_time.between?(1730,2000)
+			return ["dinner", "steak", "thai", "mexican"]
+		end
+		if 2000 < local_time || local_time < 30
+			return ["bars", "clubs", "dancing", "nightlife"]
+		end
+	end
+
 end
 
 
-def check_time(local_time)
-	if local_time.between?(300,1130)
-		return ["breakfast", "bagel", "coffee"]
-	end
-	if local_time.between?(1130,1300)
-		return ["lunch", "burgers", "salads"]
-	end
-	if local_time.between?(1300,1730)
-		return ["coffee", "tea", "crumpets", "petit fours"]
-	end
-	if local_time.between?(1730,2000)
-		return ["dinner", "steak", "thai", "mexican"]
-	end
-	if 2000 < local_time || local_time < 30
-		return ["bars", "clubs", "dancing", "nightlife"]
-	end
-end
 
-end
+
