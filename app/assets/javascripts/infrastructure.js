@@ -122,6 +122,13 @@ var sendUserData = function sendUserData(params) {
 
 $(function(){
 
-  app.initialize();
+  switch (window.location.pathname){
+    case "/":
+      app.initialize();
+      break;
+    case "/user/preferences":
+      pref.initialize();
+      break;
+  }
 
 })

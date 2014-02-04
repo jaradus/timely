@@ -1,6 +1,7 @@
-<% if current_user %>
-  You're logged in as
-  <%= current_user.email %>
-<% else %>
-  You're not logged in
-<% end %>
+<h1>Preferences</h1>
+
+<%= @keywords %>
+
+<script>
+  pref.initialize();
+</script>
