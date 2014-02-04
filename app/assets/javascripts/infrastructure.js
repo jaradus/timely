@@ -75,6 +75,7 @@ var sendUserData = function sendUserData(params) {
     success: function(data){
       console.log("Returned data goes here:")
       console.log(data);
+      list_data = data;
     }
   });
 }
