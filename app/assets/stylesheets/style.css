@@ -66,18 +66,11 @@ ul {
 
 li {
   font-family: 'Nunito', sans-serif;
+  text-align: center;
 }
 
 li.name {
   font-size: 1.6em;
-}
-
-li.address {
-  text-align: center;
-}
-
-li.rating_img {
-  text-align: right;
 }
 
 .site-container {
