@@ -39,10 +39,10 @@ class YelpApi
 		request_hash = GeoPoint.new(
 			:term => inKeywords.join(" "),
 			:latitude => inLat,
-		 	:longitude => inLon
+		 	:longitude => inLon,
+            :limit => 3
 	 	)		 
 	 	response = client.search(request_hash)
-
 #Scooter: Working on code here--commenting this out to commit
 #binding.pry 
 
