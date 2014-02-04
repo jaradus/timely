@@ -12,15 +12,23 @@ class HomeController < ApplicationController
     longitude  = params[:longitude].to_f
     local_time = params[:local_time]
 
-    results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
+    @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
 
-    results.each do |result|
-      puts result.name
-    end
 
-# # binding.pry
+    # if results['error']['id'] == nil
 
-    render json: results
+      # results.each do |result|
+      #   puts result.name
+      # end
+
+      # # binding.pry
+
+    # else
+      # Generates an map around the user's location
+    #   @map_image = "https://maps.googleapis.com/maps/api/staticmap?center=#{latitude},#{longitude}&zoom=15&size=200x200&sensor=false"
+    # end
+
+    render json: @results
 
   end
 

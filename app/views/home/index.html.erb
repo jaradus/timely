@@ -2,4 +2,8 @@
 
 <div id="location"/>
 
-
+<% if @map_image == nil %>
+  I'm not broken!
+<% else %>
+  <img src=<%= @map_image  %>>
+<% end %>

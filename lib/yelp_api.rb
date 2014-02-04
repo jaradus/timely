@@ -1,11 +1,11 @@
 class YelpApi
 	class YelpSite 
-		attr_accessor :cost, :name, :address, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
+		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
-		def initialize(cost, name, address, city, zip, rating, url, image_url)
+		def initialize(cost, name, location, city, zip, rating, url, image_url)
 			@cost = cost
 			@name = name
-			@address = address
+			@location = location
 			@city = city
 			@zipcode = zip
 			@rating = rating
@@ -29,7 +29,7 @@ class YelpApi
 
 		 #include Yelp::V1::Review::Request
 		 include Yelp::V2::Search::Request
-		 # perform an address/location-based search for cream puffs nearby
+		 # perform an location/location-based search for cream puffs nearby
 
 		request_hash = GeoPoint.new(
 			:term => inKeywords.join(" "),
@@ -53,10 +53,11 @@ class YelpApi
 			business_array.each do |business|
 				cost = "$"
 				name = business["name"]
-				address = business["address1"]
+				location = business["location"]
 				city = business["city"]
 				zip = business["zip"]
 				url = business["url"]
+
 
 				image_url = business["rating_img_url_small"]
 				
@@ -64,7 +65,7 @@ class YelpApi
 				rating_sum = 0
 
 				siteclassobject = YelpSite.new(
-					cost, name, address, city, 
+					cost, name, location, city, 
 					zip, 0, url, image_url)
 				# review_array.each do |review|
 				# 	rating_sum += review["rating"]
@@ -93,10 +94,10 @@ class YelpApi
 			 client = Yelp::Client.new
 
 			 include Yelp::V1::Review::Request
-			 # perform an address/location-based search for cream puffs nearby
+			 # perform an location/location-based search for cream puffs nearby
 
 			 request_hash = {
-			 # :address => '650 Mission St',
+			 # :location => '650 Mission St',
 	             #:city => 'New York',
 	             #:state => 'NY',
 	             :radius => 1,
@@ -122,7 +123,7 @@ class YelpApi
 			business_array.each do |business|
 				cost = "$"
 				name = business["name"]
-				address = business["address1"]
+				location = business["location"]
 				city = business["city"]
 				zip = business["zip"]
 				url = business["url"]
@@ -133,7 +134,7 @@ class YelpApi
 				rating_sum = 0
 
 				siteclassobject = YelpSite.new(
-					cost, name, address, city, 
+					cost, name, location, city, 
 					zip, 0, url, image_url)
 				review_array.each do |review|
 					rating_sum += review["rating"]
