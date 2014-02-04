@@ -22,7 +22,7 @@ class HomeController < ApplicationController
 
   def scooterTest
   	latitude = 40.740091899999996
-	longitude = -73.98969
+    longitude = -73.98969
 
     @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
 

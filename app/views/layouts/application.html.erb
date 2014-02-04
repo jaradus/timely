@@ -11,7 +11,37 @@
   </head>
   <body>
     <header>
-      <div><%= content_for?(:description) ? yield(:description) : "Timely" %></div>
+      
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href=<%= root_path %>>Timely</a>
+        </div>
+
+          <!-- Navbar right -->
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Account Settings<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to('Edit Account', edit_user_registration_path, method: :get) %></li>
+                  <li><%= link_to('Edit Preferences', edit_user_preferences_path, method: :get) %></li>
+                  <li class="divider"></li>
+                  <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
+                </ul>
+            </li>
+          </ul>
+
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
     </header>
     <!-- div containter class is intitial condition for bootstrap -->
     <div class="container"> 
