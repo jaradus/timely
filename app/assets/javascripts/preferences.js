@@ -21,6 +21,10 @@ var pref = {
           $(this).addClass('active');
         });
     })
+  },
+
+  getKeywords: function(){
+    
   }
 
 }

@@ -12,6 +12,10 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+main {
+  margin-top: 0px;
+}
+
 form {
   color: #000000;
 }
@@ -78,4 +82,29 @@ li.name{
   padding-left: 15px;
   padding-right: 15px;
   font-size: 0.9em;
+}
+
+.keyword-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left : 20px;
+  padding-right : 20px;
+  background-color: #4c4c4c;
+  color: #cccccc;
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.keyword-container-hover {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+:hover .keyword-container-hover {
+  opacity: 1;
 }
