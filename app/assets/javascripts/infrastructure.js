@@ -17,11 +17,11 @@ var app = app || {
     var self = this;
     this.latitude
     this.longitude
-    // loca_time is set by time_check.js
+    // local_time is set by time_check.js
     this.local_time
     this.elements = {
-      $location: $('#location'),
-      $device: $('#device'),
+      // $location: $('#location'),
+      // $device: $('#device'),
       $alert: $('.alert')
     }
 
@@ -29,7 +29,6 @@ var app = app || {
     this.local_time = timeCheck();
     // setRender() renders a page depending upon the browser screen. Keep commented out to load one main page.
     // setRender();
-
     console.log("Page rendered");
   }
 }
@@ -44,6 +43,7 @@ var getLocation = function() {
       app.longitude = position.coords.longitude;
       console.log("Latitude "+app.latitude);
       console.log("Longitude "+app.longitude);
+      // CALLBACK: Sends the AJAX call to the controller
       sendLocation(app.latitude, app.longitude, app.local_time);
       })
   } else {
@@ -61,17 +61,22 @@ var sendLocation = function(lat, lon, time) {
             local_time: time
             };
 
-  console.log(params)
+  sendUserData(params)
 
+}
+
+var sendUserData = function sendUserData(params) {
   $.ajax({
     url: '/api_call',
     method: 'post',
     dataType: 'json',
     data: params,
+    // success: getYelp()
     success: function(data){
-      return data;
+      console.log("Returned data goes here:")
+      console.log(data);
     }
-  })
+  });
 }
 
 // // [3] Decides which version of the page to render

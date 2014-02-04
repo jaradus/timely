@@ -1,7 +1,6 @@
 class Keyword < ActiveRecord::Base
-  attr_accessible :keyword, :period_of_time
+  attr_accessible :keyword, :period_of_time, :user_id
 
-  has_many :keywords_users
-  has_many :users, :through => :keywords_users
+  belongs_to :users
 
 end
