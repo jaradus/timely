@@ -16,7 +16,3 @@ end
 
 
 
-switch (user.time) {
-  case <300:
-
-}
