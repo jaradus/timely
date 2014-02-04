@@ -27,7 +27,6 @@ class HomeController < ApplicationController
     @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
 
 
-	binding.pry
 
   end
 

@@ -59,3 +59,15 @@ main {
   display: none;
 }
 
+ul{
+  list-style-type: none;
+}
+
+li{
+  font-family: 'Nunito', sans-serif;
+}
+
+li.name{
+  font-size: 1.3em;
+}
+
