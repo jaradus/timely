@@ -37,9 +37,8 @@ class YelpApi
 		 	:longitude => inLon
 	 	)		 
 	 	response = client.search(request_hash)
-		 
+
 #		 request = Location.new(request_hash)
-binding.pry		 
 			site_array = []
 			puts "Calling request with these parameters: " + request_hash.to_s
 
@@ -60,21 +59,21 @@ binding.pry
 				url = business["url"]
 
 				image_url = business["rating_img_url_small"]
-
-				review_array = business["reviews"]
+				
+				# review_array = business["reviews"]
 				rating_sum = 0
 
 				siteclassobject = YelpSite.new(
 					cost, name, address, city, 
 					zip, 0, url, image_url)
-				review_array.each do |review|
-					rating_sum += review["rating"]
-					siteclassobject.reviews.push(
-						[review["rating"], 
-						review["text_excerpt"],
-						review["rating_img_url_small"]]
-						)
-				end
+				# review_array.each do |review|
+				# 	rating_sum += review["rating"]
+				# 	siteclassobject.reviews.push(
+				# 		[review["rating"], 
+				# 		review["text_excerpt"],
+				# 		review["rating_img_url_small"]]
+				# 		)
+				# end
 				site_array << siteclassobject
 			end
 		return site_array
