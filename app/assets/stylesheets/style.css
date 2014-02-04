@@ -16,6 +16,22 @@ form {
   color: #000000;
 }
 
+div.devise {
+  width: 19em;
+  padding: 0.5em 1em 1em 1.5em;
+  background-color: #ddd;
+  border-radius: 2em;
+  color: #33367F;
+  margin:0 auto;
+}
+
+div.checkboxupperspacing {
+  margin: 0.8em 0em 0em 0em;
+}
+/*input #user_remember_me .checkbox{
+  padding: 2em;
+}*/
+
 .navbar-default {
   background-color: #282a64;
   border-color: #282a64;
@@ -41,5 +57,17 @@ main {
 
 .hide{
   display: none;
+}
+
+ul{
+  list-style-type: none;
+}
+
+li{
+  font-family: 'Nunito', sans-serif;
+}
+
+li.name{
+  font-size: 1.3em;
 }
 
