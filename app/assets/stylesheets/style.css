@@ -71,3 +71,11 @@ li.name{
   font-size: 1.3em;
 }
 
+.tab-content {
+  background: #ffffff;
+  color: #555555;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 0.9em;
+}

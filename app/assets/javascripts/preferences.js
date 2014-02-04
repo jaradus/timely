@@ -17,7 +17,7 @@ var pref = {
     $.each(pref.elements, function(value){
       this.click(function (e) {
           e.preventDefault();
-          $(this:last).tab('show');
+          $(this):last.tab('show');
           $(this).addClass('active');
         });
     })
