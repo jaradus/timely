@@ -11,4 +11,6 @@ class CreatePeriodOfTimeDefinitions < ActiveRecord::Migration
       t.timestamps
     end
   end
+
 end
+
