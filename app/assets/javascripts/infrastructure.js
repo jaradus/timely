@@ -71,23 +71,13 @@ var sendUserData = function sendUserData(params) {
     method: 'post',
     dataType: 'json',
     data: params,
-    success: getYelp()
-  });
-}
-
-var getYelp = function getYelp() {
-    $.ajax({
-    url: '/api_call',
-    method: 'post',
-    dataType: 'json',
-    data: params,
+    // success: getYelp()
     success: function(data){
+      console.log("Returned data goes here:")
       console.log(data);
-      return data;
     }
   });
 }
-
 
 // // [3] Decides which version of the page to render
 // // ===============================================

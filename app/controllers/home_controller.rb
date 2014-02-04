@@ -3,7 +3,7 @@ require 'yelp_api' # in the lib/assets folder
 class HomeController < ApplicationController
 
   def index
-  	lat_lon_keyword_search(40, -70, ["dinner", "chinese"])
+  	
   end
 
 
@@ -14,24 +14,7 @@ class HomeController < ApplicationController
     longitude  = params[:longitude].to_f
     local_time = params[:local_time].to_i
 
-
-
     @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
-
-
-
-    # if results['error']['id'] == nil
-
-      # results.each do |result|
-      #   puts result.name
-      # end
-
-      # # binding.pry
-
-    # else
-      # Generates an map around the user's location
-    #   @map_image = "https://maps.googleapis.com/maps/api/staticmap?center=#{latitude},#{longitude}&zoom=15&size=200x200&sensor=false"
-    # end
 
     render json: @results
 
@@ -76,7 +59,7 @@ class HomeController < ApplicationController
 		if local_time.between?(1730,2000)
 			return ["dinner", "steak", "thai", "mexican"]
 		end
-		if 2000 < local_time || local_time < 30
+		if 2000 < local_time || local_time < 300
 			return ["bars", "clubs", "dancing", "nightlife"]
 		end
 	end
