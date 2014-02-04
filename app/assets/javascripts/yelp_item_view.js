@@ -2,11 +2,11 @@ var renderYelpItem = function(item){
 	// var $div = $("#site_container");
 	var $ul = $("<ul>").addClass("list");
 
-	var $image = $("<img>").attr("src", item.image_url);
+	// var $image = $("<img>").attr("src", item.image_url);
 		
 	var $name_li = $("<li>").addClass("name").text(item.name);
 	var $address_li = $("<li>").addClass("address").text(item.location);
-	var $rating_li = $("<li>").addClass("rating").text(item.rating);
+	var $rating_img = $("<img>").attr("src", item.image_url);
 
 	//should hide until user clicks on 'more info' button
 	//var $review_li = $("<li>").addClass("phone_number").text(item.review);
@@ -14,7 +14,7 @@ var renderYelpItem = function(item){
 	$ul
 		.append($name_li)
 		.append($address_li)
-		.append($rating_li)
+		.append($rating_img)
 	;
 
 	// $div
