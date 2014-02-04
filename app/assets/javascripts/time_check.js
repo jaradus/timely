@@ -12,9 +12,11 @@ var timeCheck = function timeCheck() {
     minutes = "0"+min;
   } else {
     minutes = min;
-  }
+  };
 
   // Concatenates the hour and minutes into one string
-  return hour.toString() + minutes.toString();
+  var time = hour.toString() + minutes.toString();
+  console.log(time);
+  return time
 
 }
