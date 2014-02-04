@@ -2,7 +2,7 @@ class YelpApi
 	class YelpSite 
 		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
-		def initialize(name, location, city, zip, rating, url, image_url)
+		def initialize(name, location, city, zip, rating, url, image_url, state_code)
 			@name = name
 			@location = location
 			@city = city
@@ -12,6 +12,7 @@ class YelpApi
 			@reviews = []
 			@url = url
 			@image_url = image_url
+			@state_code = state_code
 		end
 	end
 
@@ -72,6 +73,10 @@ class YelpApi
 			zip 			= business["location"]["postal_code"]
 			url 			= business["url"]
 			image_url 		= business["rating_img_url_small"]
+			state_code		= business["location"]["state_code"]
+
+binding.pry
+
 
 			#"reviews" key seems to be unavailable in V2
 			#results so I'm removing it
@@ -81,7 +86,7 @@ class YelpApi
 			rating = business["rating"]
 			siteclassobject = YelpSite.new(
 				name, address, city, 
-				zip, rating, url, image_url
+				zip, rating, url, image_url, state_code
 			)
 			
 			#Put the site object into the site array
@@ -136,6 +141,7 @@ class YelpApi
 				city = business["city"]
 				zip = business["zip"]
 				url = business["url"]
+
 
 				image_url = business["rating_img_url_small"]
 
