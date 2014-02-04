@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140201010533) do
+ActiveRecord::Schema.define(:version => 20140203215202) do
 
   create_table "dislikes", :force => true do |t|
     t.string   "name"
@@ -27,15 +27,9 @@ ActiveRecord::Schema.define(:version => 20140201010533) do
   create_table "keywords", :force => true do |t|
     t.string   "keyword"
     t.string   "period_of_time"
+    t.integer  "user_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
-  end
-
-  create_table "keywords_users", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "keyword_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "likes", :force => true do |t|
@@ -47,6 +41,17 @@ ActiveRecord::Schema.define(:version => 20140201010533) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "period_of_time_definitions", :force => true do |t|
+    t.integer  "morning",    :default => 300
+    t.integer  "noon",       :default => 1130
+    t.integer  "afternoon",  :default => 1300
+    t.integer  "evening",    :default => 1730
+    t.integer  "night",      :default => 2000
+    t.integer  "user_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   has_many :dislikes, :dependent => :destroy
   has_many :likes, :dependent => :destroy
   
-  has_many :keywords_users, :dependent => :destroy
-  has_many :keywords
+  has_many :keywords, :dependent => :destroy
   
 end
