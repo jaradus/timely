@@ -73,9 +73,16 @@ var sendUserData = function sendUserData(params) {
     data: params,
     // success: getYelp()
     success: function(data){
-      console.log("Returned data goes here:")
+      console.log("Returned data goes here:");
       console.log(data);
+
       list_data = data;
+      //testing to see if object gets passed to renderYelpItem function
+      data.forEach(function(yelp_item_attr) {
+        var ul = renderYelpItem(yelp_item_attr);
+        $("#site_container").prepend(ul);
+      });
+
     }
   });
 }
