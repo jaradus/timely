@@ -55,19 +55,33 @@ main {
   width: 500px;
 }
 
-.hide{
+.hide {
   display: none;
 }
 
-ul{
+ul {
   list-style-type: none;
+  display: center;
 }
 
-li{
+li {
   font-family: 'Nunito', sans-serif;
 }
 
-li.name{
-  font-size: 1.3em;
+li.name {
+  font-size: 1.6em;
+}
+
+li.address {
+  text-align: center;
+}
+
+li.rating_img {
+  text-align: right;
+}
+
+.site-container {
+  margin: 0 auto;
+  width: 100%;
 }
 
