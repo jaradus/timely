@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   font-size: 18px;
   color: #ffffff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 header {
@@ -16,6 +17,7 @@ header {
   text-align: center;
   height: 50px;
   background-color: #282a64;
+  /*background-color: #0c2a40;*/
   font-family: 'Playfair Display', serif;
   font-size: 1.2em;
   color: #ffffff;
