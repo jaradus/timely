@@ -17,57 +17,92 @@ var app = app || {
     var self = this;
     this.latitude
     this.longitude
+    // loca_time is set by time_check.js
+    this.local_time
     this.elements = {
       $location: $('#location'),
-      $device: $('#device')
+      $device: $('#device'),
+      $alert: $('.alert')
     }
 
     getLocation();
+    this.local_time = timeCheck();
     // setRender() renders a page depending upon the browser screen. Keep commented out to load one main page.
     // setRender();
-    console.log("Page rendered")
+
+    console.log("Page rendered");
   }
 }
 
 // [2] Gets the browser's location
 // ===============================
 var getLocation = function() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-    app.latitude = position.coords.latitude;
-    app.longitude = position.coords.longitude;
-  })
-  console.log("Geolocation checked")
-}
-
-// [3] Decides which version of the page to render
-// ===============================================
-var setRender = function() {
-  // Calculated window width, then sets which render is applicable for the client's browser
-  var window_width = document.documentElement.clientWidth
-    
-  if (window_width > 640) {
-    mainView.desktopRender();
+  if (navigator.geolocation)
+  {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      app.latitude = position.coords.latitude;
+      app.longitude = position.coords.longitude;
+      console.log("Latitude "+app.latitude);
+      console.log("Longitude "+app.longitude);
+      sendLocation(app.latitude, app.longitude, app.local_time);
+      })
   } else {
-    mainView.mobileRender();
-  }
-  console.log("Appropriate device rendered")
-}
-
-// [4] Renders the main page
-// =========================
-var mainView = {
-
-  desktopRender: function() {
-    app.elements.$device.append("You're a big screen!");
-    app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
-  },
-
-  mobileRender: function() {
-    app.elements.$device.append("You're a mobile device!");
-    app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
+    app.elements.$alert.append("Geolocation is not supported by this browser.")
   }
 
+  console.log("Geolocation checked");
 }
+
+var sendLocation = function(lat, lon, time) {
+  console.log(lat+", "+lon+", "+time);
+  params = {
+            latitude: lat,
+            longitude: lon,
+            local_time: time
+            };
+
+  console.log(params)
+
+  $.ajax({
+    url: '/api_call',
+    method: 'post',
+    dataType: 'json',
+    data: params,
+    success: function(data){
+      return data;
+    }
+  })
+}
+
+// // [3] Decides which version of the page to render
+// // ===============================================
+// var setRender = function() {
+//   // Calculated window width, then sets which render is applicable for the client's browser
+//   var window_width = document.documentElement.clientWidth
+    
+//   if (window_width > 640) {
+//     mainView.desktopRender();
+//   } else {
+//     mainView.mobileRender();
+//   }
+//   console.log("Appropriate device rendered")
+// }
+
+// // [4] Renders the main page
+// // =========================
+// var mainView = {
+
+//   desktopRender: function() {
+//     app.elements.$device.append("You're a big screen!");
+//     app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
+//   },
+
+//   mobileRender: function() {
+//     app.elements.$device.append("You're a mobile device!");
+//     app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
+//   }
+
+// }
 
 // [5] When File has Completed Loading
 // ===================================
