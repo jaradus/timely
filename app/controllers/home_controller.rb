@@ -11,9 +11,9 @@ class HomeController < ApplicationController
     latitude   = params[:latitude].to_f
     longitude  = params[:longitude].to_f
     local_time = params[:local_time].to_i
+    keywords = get_keywords(local_time, current_user)
 
-
-    @results = lat_lon_keyword_search(latitude, longitude, get_keywords(local_time, current_user))
+    @results = lat_lon_keyword_search(latitude, longitude, keywords)
 
     render json: @results
 
