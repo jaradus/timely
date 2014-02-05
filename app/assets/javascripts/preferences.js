@@ -110,7 +110,9 @@ var pref = {
     // Renders morning keywords
     if (pref.keywords.morning.length > 0) {
       $.each(pref.keywords.morning,function(i,v){
-
+        // Creates a new Keyword object, and pushes it into the local_keyword_repo
+        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
+        pref.local_keyword_repo.push(item);
 
         pref.information.$morningContent.append(keywordContainer);
         pref.information.$morningContent.children().last().append(v['keyword']);
