@@ -44,20 +44,47 @@ var pref = {
       method: 'get',
       success: function(data){
         pref.prefRender(data); 
+        console.log(data);
       }
     });
   },
 
   prefRender: function(data){
     var keywordContainer = ["<div class='keyword-container'></div>"];
+
     pref.keywords = data;
 
     // Renders morning keywords
     if (pref.keywords.morning.length > 0) {
-      for (var i = 0; i < pref.keywords.morning.length; i++) {
+      $.each(pref.keywords.morning,function(i,v){
         pref.information.$morningContent.append(keywordContainer);
+        pref.information.$morningContent.children().last().append(v['keyword']);
+      });
+    };
+    // Renders noon keywords
+    if (pref.keywords.noon.length > 0) {
+      for (var i = 0; i < pref.keywords.noon.length; i++) {
+        pref.information.$noonContent.append(keywordContainer);
       };
-    }
+    };
+    // Renders afternoon keywords
+    if (pref.keywords.afternoon.length > 0) {
+      for (var i = 0; i < pref.keywords.afternoon.length; i++) {
+        pref.information.$afternoonContent.append(keywordContainer);
+      };
+    };
+    // Renders evening keywords
+    if (pref.keywords.evening.length > 0) {
+      for (var i = 0; i < pref.keywords.evening.length; i++) {
+        pref.information.$eveningContent.append(keywordContainer);
+      };
+    };
+    // Renders night keywords
+    if (pref.keywords.night.length > 0) {
+      for (var i = 0; i < pref.keywords.night.length; i++) {
+        pref.information.$nightContent.append(keywordContainer);
+      };
+    };
 
   }
 
