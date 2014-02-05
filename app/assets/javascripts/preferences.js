@@ -127,47 +127,19 @@ var pref = {
     };
     // Renders noon keywords
     if (pref.keywords.noon.length > 0) {
-      $.each(pref.keywords.noon,function(i,v){
-        // Creates a new Keyword object, and pushes it into the local_keyword_repo
-        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-        pref.local_keyword_repo.push(item);
-
-        pref.information.$noonContent.append(keywordContainer);
-        pref.information.$noonContent.children().last().append(v.keyword);
-      });
+      pref.renderAndStore(pref.keywords.noon,pref.information.$noonContent);
     };
     // Renders afternoon keywords
     if (pref.keywords.afternoon.length > 0) {
-      $.each(pref.keywords.afternoon,function(i,v){
-        // Creates a new Keyword object, and pushes it into the local_keyword_repo
-        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-        pref.local_keyword_repo.push(item);
-
-        pref.information.$afternoonContent.append(keywordContainer);
-        pref.information.$afternoonContent.children().last().append(v.keyword);
-      });
+      pref.renderAndStore(pref.keywords.afternoon,pref.information.$afternoonContent);
     };
     // Renders evening keywords
     if (pref.keywords.evening.length > 0) {
-      $.each(pref.keywords.evening,function(i,v){
-        // Creates a new Keyword object, and pushes it into the local_keyword_repo
-        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-        pref.local_keyword_repo.push(item);
-
-        pref.information.$eveningContent.append(keywordContainer);
-        pref.information.$eveningContent.children().last().append(v.keyword);
-      });
+      pref.renderAndStore(pref.keywords.evening,pref.information.$eveningContent);
     };
     // Renders night keywords
     if (pref.keywords.night.length > 0) {
-      $.each(pref.keywords.night,function(i,v){
-        // Creates a new Keyword object, and pushes it into the local_keyword_repo
-        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-        pref.local_keyword_repo.push(item);
-
-        pref.information.$nightContent.append(keywordContainer);
-        pref.information.$nightContent.children().last().append(v.keyword);
-      });
+      pref.renderAndStore(pref.keywords.night,pref.information.$nightContent);
     };
 
   }
