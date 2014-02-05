@@ -14,16 +14,16 @@ class YelpApi
 	#idea to limit this so our Yelp Keys don't get blocked
 	#bc of too much usage
 	MAX_RESULTS = 3
+	HUMAN_READABLE_CATEGORY_STRING_IDX = 0
 
 	class YelpSite 
-#I don't think this is needed anymore
 		attr_accessor :cost, :name, :location, :city, :zipcode, :rating, :reviews, :yelp, :url, :image_url
 
 		# Create the YelpSite object with associated data
 		def initialize(
 			name, phone_num, cross_streets,
 			address, city, zip, state_code, 
-			rating, 
+			rating, categories_array,
 			url, little_stars_url, medium_stars_url, big_stars_url)
 			@name 				= name
 			@phone_num			= phone_num
@@ -33,6 +33,7 @@ class YelpApi
 			@zipcode 			= zip
 			@state_code 		= state_code
 			@rating 			= rating
+			@categories_array	= categories_array
 			@url 				= url
 			@little_stars_url 	= little_stars_url
 			@medium_stars_url 	= medium_stars_url
@@ -101,17 +102,23 @@ class YelpApi
 			medium_stars_url= business["rating_img_url"]
 			big_stars_url	= business["rating_img_url_large"]
 			
+			categories_array = []
+
+			if business.has_key?("categories")
+				business["categories"].each do |category|
+					categories_array << category[HUMAN_READABLE_CATEGORY_STRING_IDX]
+			 	end
+			 end
+
 			#Create our own YelpSite data object with 
 			#JUST The data we're interested in
 			siteclassobject = YelpSite.new(
 				name, phone_num, cross_streets, 
 				address, city, zip, state_code,
-				rating, 
+				rating, categories_array, 
 				url, little_stars_url, medium_stars_url, big_stars_url
 			)
 
-#binding.pry			
-			
 			#Put the site object into the site array
 			site_array << siteclassobject
 		end

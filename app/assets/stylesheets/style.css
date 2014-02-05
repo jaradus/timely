@@ -1,67 +1,115 @@
 html { 
-  height: 100%
+	height: 100%
 }
 
 body { 
-  height: 100%; margin: 0; padding: 0;
-  background-image: url('/assets/background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  font-size: 18px;
-  color: #ffffff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-form {
-  color: #000000;
-}
-
-div.devise {
-  width: 19em;
-  padding: 0.5em 1em 1em 1.5em;
-  background-color: #ddd;
-  border-radius: 2em;
-  color: #33367F;
-  margin:0 auto;
-}
-
-div.checkboxupperspacing {
-  margin: 0.8em 0em 0em 0em;
-}
-/*input #user_remember_me .checkbox{
-  padding: 2em;
-}*/
-
-.navbar-default {
-  background-color: #282a64;
-  border-color: #282a64;
-}
-
-.navbar-default .navbar-brand {
-  color: #66ffff;
-  font-family: 'Playfair Display', serif;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: #e6e6e6;
+	height: 100%; margin: 0; padding: 0;
+	background-image: url('/assets/background.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	font-size: 18px;
+	color: #ffffff;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 main {
-  background-color: transparent;
+  margin-top: 0px;
+}
+
+form {
+	color: #000000;
+}
+
+div#error_explanation h3 {
+	color: red;
+}
+div#error_explanation ul li{
+	text-align: left;
+}
+div#error_explanation ul{
+	padding-left: 0;
+}
+
+#devise_sign_up_button_id a{
+	display: block;
+	width: 85px;
+	background-color: rgb(192, 192, 192);
+	padding: 0.4em 0.3em 0.4em 0.3em;
+	text-align: center;
+	border-radius: 5px;
+	color: black;
+}
+#devise_sign_in_button_id a{
+	display: block;
+	width: 85px;
+	background-color: rgb(192, 192, 192);
+	padding: 0.4em 0.3em 0.4em 0.3em;
+	text-align: center;
+	border-radius: 5px;
+	color: black;
+}
+
+/* Overriding Bootstrap's default font size for buttons */
+.btn {
+	font-size: 18px;
+}
+
+div.devise {
+	width: 19em;
+	padding: 0.5em 1em 1em 1.5em;
+	background-color: #ddd;
+	border-radius: 2em;
+	color: #33367F;
+	margin:0 auto;
+}
+
+.flash {
+	text-align: center;
+	padding: 10px 15px 10px 0;
+	margin-top: 1em;
+	background-color: #ddd;
+	color: #33367F;
+	border: 1px solid black; 
+	border-radius: 1em;
+}
+
+div.checkboxupperspacing {
+	margin: 0.8em 0em 0em 0em;
+}
+/*input #user_remember_me .checkbox{
+	padding: 2em;
+}*/
+
+.navbar-default {
+	background-color: #282a64;
+	border-color: #282a64;
+}
+
+.navbar-default .navbar-brand {
+	color: #66ffff;
+	font-family: 'Playfair Display', serif;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #e6e6e6;
+}
+
+main {
+	background-color: transparent;
 }
 
 #map-canvas { 
-  height: 500px;
-  width: 500px;
+	height: 500px;
+	width: 500px;
 }
 
 .hide {
-  display: none;
+	display: none;
 }
 
 ul {
-  list-style-type: none;
-  display: center;
+	list-style-type: none;
+	display: center;
 }
 
 li {
@@ -70,7 +118,7 @@ li {
 }
 
 li.name {
-  font-size: 1.6em;
+	font-size: 1.6em;
 }
 
 li.more_info_button {
@@ -78,15 +126,41 @@ li.more_info_button {
 }
 
 .site-container {
-  margin: 0 auto;
-  width: 100%;
+	margin: 0 auto;
+	width: 100%;
 }
 
 .tab-content {
-  background: #ffffff;
-  color: #555555;
-  padding: 10px;
-  padding-left: 15px;
-  padding-right: 15px;
-  font-size: 0.9em;
+	background: #ffffff;
+	color: #555555;
+	padding: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+	font-size: 0.9em;
+}
+
+.keyword-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left : 20px;
+  padding-right : 20px;
+  background-color: #4c4c4c;
+  color: #cccccc;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.keyword-container-hover {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+:hover .keyword-container-hover {
+  opacity: 1;
 }
