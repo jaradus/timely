@@ -104,7 +104,7 @@ var pref = {
   },
 
 
-  renderAndStore: function(keywords_for_period_of_time,contentTab){
+  renderAndStore: function(keywords_for_period_of_time,tabContent){
     $.each(keywords_for_period_of_time,function(i,v){
 
       // Creates a new Keyword object, and pushes it into the local_keyword_repo
@@ -112,7 +112,8 @@ var pref = {
       pref.local_keyword_repo.push(item);
 
       var $template = $("<div>").addClass('keyword-container').text(v.keyword);
-      contentTab.append($template);
+      $template.data({id: v.id});
+      var new_div = tabContent.append($template);
 
     });
   },
