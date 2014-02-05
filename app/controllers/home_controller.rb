@@ -1,4 +1,5 @@
 require 'yelp_api' # in the lib/assets folder
+require 'get_keyword' # in the lib/assets folder
 
 class HomeController < ApplicationController
 
@@ -14,7 +15,10 @@ class HomeController < ApplicationController
     longitude  = params[:longitude].to_f
     local_time = params[:local_time].to_i
 
-    @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
+    binding.pry
+       #if statement if user is not logged in 
+
+    @results = lat_lon_keyword_search(latitude, longitude, get_keywords(local_time, current_user))
 
     render json: @results
 
@@ -23,7 +27,6 @@ class HomeController < ApplicationController
   def scooterTest
   	latitude = 40.740091899999996
     longitude = -73.98969
-
     @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
 
 
@@ -43,25 +46,14 @@ class HomeController < ApplicationController
 		return YelpApi.searchLatLonKeywords(inLat, inLon, inKeywords)
 	end
 
+  def get_keywords(local_time, current_user)
+  	return GetKeyword.get_keywords(local_time, current_user)
+  end
 
-	#NOTE: THERE IS NO ROUTE FOR THIS METHOD
-	def get_keywords(local_time, user)
-		if local_time.between?(300,1130)
-			return ["breakfast", "bagel", "coffee"]
-		end
-		if local_time.between?(1130,1300)
-			return ["lunch", "burgers", "salads"]
-		end
-		if local_time.between?(1300,1730)
-			return ["coffee", "tea", "crumpets", "petit fours"]
-		end
-		if local_time.between?(1730,2000)
-			return ["dinner", "steak", "thai", "mexican"]
-		end
-		if 2000 < local_time || local_time < 300
-			return ["bars", "clubs", "dancing", "nightlife"]
-		end
-	end
+
+
+
+
 
 end
 
