@@ -12,6 +12,10 @@ body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+main {
+  margin-top: 0px;
+}
+
 form {
 	color: #000000;
 }
@@ -91,19 +95,12 @@ ul {
 }
 
 li {
-	font-family: 'Nunito', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  text-align: center;
 }
 
 li.name {
 	font-size: 1.6em;
-}
-
-li.address {
-	text-align: center;
-}
-
-li.rating_img {
-	text-align: right;
 }
 
 .site-container {
@@ -118,4 +115,30 @@ li.rating_img {
 	padding-left: 15px;
 	padding-right: 15px;
 	font-size: 0.9em;
+}
+
+.keyword-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left : 20px;
+  padding-right : 20px;
+  background-color: #4c4c4c;
+  color: #cccccc;
+  display: inline-block;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.keyword-container-hover {
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -ms-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+:hover .keyword-container-hover {
+  opacity: 1;
 }
