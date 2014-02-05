@@ -42,7 +42,7 @@ var pref = {
   getKeywords: function(){
 
     $.ajax({
-      url: '/user_keywords',
+      url: '/keywords',
       method: 'get',
       success: function(data){
         pref.prefRender(data);

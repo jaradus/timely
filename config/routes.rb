@@ -5,7 +5,7 @@ Timely::Application.routes.draw do
   post '/api_call' => 'home#api_call'
   get '/api_call' => 'home#api_call'
 
-  get '/user_keywords' => 'user#user_keywords'
+  get '/keywords' => 'user#user_keywords'
 
   get '/user/preferences' => 'user#preferences', as: 'edit_user_preferences'
 
