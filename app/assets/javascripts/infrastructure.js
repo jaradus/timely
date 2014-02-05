@@ -2,8 +2,6 @@
 // -----------------
 // [1] Page elements
 // [2] Geolocates the browser
-// [3] Determines whether the user is on a desktop or mobile device
-// [4] Instructions on how to render the page, depending on device type
 // [5] On page load instructions (this launches [1])
 // =====================================================================
 
@@ -87,33 +85,39 @@ var sendUserData = function sendUserData(params) {
   });
 }
 
-// // [3] Decides which version of the page to render
-// // ===============================================
-// var setRender = function() {
-//   // Calculated window width, then sets which render is applicable for the client's browser
-//   var window_width = document.documentElement.clientWidth
-    
-//   if (window_width > 640) {
-//     mainView.desktopRender();
-//   } else {
-//     mainView.mobileRender();
-//   }
-//   console.log("Appropriate device rendered")
-// }
+// Loading Screen while waiting for the API Ajax Return
+// ====================================================
+// var loading = {
 
-// // [4] Renders the main page
-// // =========================
-// var mainView = {
+//   initialize: function() {
+//     var self = this;
+//     this.lines: 11 // The number of lines to draw
+//     this.length: 20 // The length of each line
+//     this.width: 10 // The line thickness
+//     this.radius: 30 // The radius of the inner circle
+//     this.corners: 1 // Corner roundness (0..1)
+//     this.rotate: 0 // The rotation offset
+//     this.direction: 1 // 1: clockwise, -1: counterclockwise
+//     this.color: '#000' // #rgb or #rrggbb or array of colors
+//     this.speed: 1 // Rounds per second
+//     this.trail: 68 // Afterglow percentage
+//     this.shadow: false // Whether to render a shadow
+//     this.hwaccel: false // Whether to use hardware acceleration
+//     this.className: 'spinner' // The CSS class to assign to the spinner
+//     this.zIndex: 2e9 // The z-index (defaults to 2000000000)
+//     this.top: 'auto' // Top position relative to parent in px
+//     this.left: 'auto' // Left position relative to parent in px
+//   };
 
-//   desktopRender: function() {
-//     app.elements.$device.append("You're a big screen!");
-//     app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
-//   },
+  // loading.$target = $('loading_screen');
 
-//   mobileRender: function() {
-//     app.elements.$device.append("You're a mobile device!");
-//     app.elements.$location.append("Latitude: "+app.latitude+", longitude: "+app.longitude);
-//   }
+  // putLoading: function() {
+  //   new Spinner(loading.opts).spin(loading.$target);
+  // }
+
+  // removeLoading: function() {
+  //   this.stop();
+  // }
 
 // }
 
