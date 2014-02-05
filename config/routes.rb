@@ -13,6 +13,8 @@ Timely::Application.routes.draw do
 
   get '/scooterTest' => 'home#scooterTest'
 
+  resources :keywords
+
 
 
 end

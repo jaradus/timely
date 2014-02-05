@@ -3,6 +3,7 @@ var pref = {
   initialize: function(){
     pref.keywords
     pref.local_keyword_repo = []
+    pref.index_of_deleted_keywords =[]
 
     pref.tabs = {
       // Tabs
@@ -54,8 +55,52 @@ var pref = {
   Keyword: function(word, period_of_time, id){
     var self = this;
     this.keyword = word;
-    this.time_period = period_of_time;
+    this.period_of_time = period_of_time;
     this.id = id;
+
+    this.all = function(){
+      return pref.local_keyword_repo;
+    }
+
+    this.create = function(){
+      var params = {
+        word: {
+          keyword: self.word,
+          period_of_time: self.period_of_time
+        }
+      }
+      $.ajax({
+        url: "/keywords",
+        type: "post",
+        dataType: "json",
+        data: params,
+        success: function(data){
+          // data is the newly created task that Rails sends back
+          self.id = data.id;
+        }
+      })
+    }
+
+    this.destroy = function(){
+
+      $.ajax({
+        url: "/keywords/"+self.id,
+        type: "DELETE",
+        dataType: "json",
+        // data: {"id": id},
+        success: function(data){
+          // data is the newly created task that Rails sends back
+          pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self)
+          pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1)
+        }
+      })
+    }
+
+    // when all is said and done...
+    // add the task to the tasks array
+
+    pref.local_keyword_repo.push(this);
+
   },
 
   prefRender: function(data){
@@ -65,9 +110,7 @@ var pref = {
     // Renders morning keywords
     if (pref.keywords.morning.length > 0) {
       $.each(pref.keywords.morning,function(i,v){
-        // Creates a new Keyword object, and pushes it into the local_keyword_repo
-        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-        pref.local_keyword_repo.push(item);
+
 
         pref.information.$morningContent.append(keywordContainer);
         pref.information.$morningContent.children().last().append(v['keyword']);
