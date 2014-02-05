@@ -7,19 +7,19 @@
 
 				if user == nil 
 					if local_time.between?(300,1130)
-						return ["breakfast", "bagel", "coffee"]
+						return ["breakfast", "bagel", "coffee"].sample(2)
 					end
 					if local_time.between?(1130,1300)
-						return ["lunch", "burgers", "salads"]
+						return ["lunch", "burgers", "salads"].sample(2)
 					end
 					if local_time.between?(1300,1730)
-						return ["coffee", "tea", "crumpets", "petit fours"]
+						return ["coffee", "tea", "crumpets", "petit fours"].sample(2)
 					end
 					if local_time.between?(1730,2000)
-						return ["dinner", "steak", "thai", "mexican"]
+						return ["dinner", "steak", "thai", "mexican"].sample(2)
 					end
 					if 2000 < local_time || local_time < 300
-						return ["bars", "clubs", "dancing", "nightlife"]
+						return ["bars", "clubs", "dancing", "nightlife"].sample(2)
 					end
 				else
 					if local_time.between?(300,1130)
