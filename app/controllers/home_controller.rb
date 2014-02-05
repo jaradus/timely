@@ -6,9 +6,6 @@ class HomeController < ApplicationController
   	
   end
 
-
-
-
   def api_call
     latitude   = params[:latitude].to_f
     longitude  = params[:longitude].to_f
@@ -25,8 +22,6 @@ class HomeController < ApplicationController
     longitude = -73.98969
 
     @results = lat_lon_keyword_search(latitude, longitude, ["bagels","coffee"])
-
-
 
   end
 

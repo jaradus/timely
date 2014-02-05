@@ -101,6 +101,7 @@ li.name {
   color: #cccccc;
   display: inline-block;
   margin-top: 5px;
+  margin-left: 5px;
 }
 
 .keyword-container-hover {
