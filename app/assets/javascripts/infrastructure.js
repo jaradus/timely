@@ -61,7 +61,7 @@ var sendLocation = function(lat, lon, time) {
             local_time: time
             };
 
-  sendUserData(params)
+  //sendUserData(params)
 
 }
 

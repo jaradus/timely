@@ -20,6 +20,16 @@ form {
 	color: #000000;
 }
 
+.TimelyLogo{
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 20px;
+	color: white;
+	transform:rotate(107deg);
+	-ms-transform:rotate(107deg); /* IE 9 */
+	-webkit-transform:rotate(107deg); /* Safari and Chrome */
+
+}
+
 div#error_explanation h3 {
 	color: red;
 }
