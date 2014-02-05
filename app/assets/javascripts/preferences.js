@@ -3,7 +3,8 @@ var pref = {
   initialize: function(){
     pref.keywords
     pref.local_keyword_repo = []
-    pref.index_of_deleted_keywords =[]
+    pref.index_of_deleted_keywords = []
+    pref.$tabContent = $('.tab-content')
 
     pref.tabs = {
       // Tabs
@@ -58,10 +59,6 @@ var pref = {
     this.period_of_time = period_of_time;
     this.id = id;
 
-    this.all = function(){
-      return pref.local_keyword_repo;
-    }
-
     this.create = function(){
       var params = {
         word: {
@@ -81,21 +78,6 @@ var pref = {
       })
     }
 
-    this.destroy = function(){
-
-      $.ajax({
-        url: "/keywords/"+self.id,
-        type: "DELETE",
-        dataType: "json",
-        // data: {"id": id},
-        success: function(data){
-          // data is the newly created task that Rails sends back
-          pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self);
-          pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1);
-        }
-      })
-    }
-
     // when all is said and done...
     // add the keyword to the keywords array
 
@@ -111,15 +93,38 @@ var pref = {
       item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
       pref.local_keyword_repo.push(item);
 
+      // (1) This is awesome. (2) The next line is a template for our the div containg the keyword and then the word itself
       var $template = $("<div>").addClass('keyword-container').text(v.keyword);
+
+      // This takes that constructed item from above and attaches the keyword's id from the db to it's .data
       $template.data({id: v.id});
-      var new_div = tabContent.append($template);
+
+      // This appends the constructed item to the appropriate tab content
+      tabContent.append($template);
 
     });
   },
 
+  destroyKeyword: function(id_hash){
+    $.ajax({
+      url: "/keywords/"+id_hash.id,
+      type: "DELETE",
+      dataType: "json",
+      success: function(data){
+        console.log(data+" destroyed");
+        // data is the newly created task that Rails sends back
+        // pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self);
+        // pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1);
+        pref.getKeywords();
+      }
+    })
+  },
+
   prefRender: function(data){
 
+    console.log(pref.$tabContent);
+    // pref.$tabContent.remove();
+    // pref.$tabContent.empty();
     pref.keywords = data;
 
     // Renders morning keywords
@@ -142,6 +147,20 @@ var pref = {
     if (pref.keywords.night.length > 0) {
       pref.renderAndStore(pref.keywords.night,pref.information.$nightContent);
     };
+
+    // Add event handler to the entire tab content div
+    pref.$tabContent.on('click', function(event) {
+        console.log($(event.target).data().id);
+        // Retrieves the div's unique ID as located in the db
+        var id_of_keyword_to_delete = $(event.target).data();
+        if (id_of_keyword_to_delete.id) {
+          pref.destroyKeyword(id_of_keyword_to_delete);
+        } else {
+          console.log("Where'd u click");
+        };
+
+    });
+
 
   }
 

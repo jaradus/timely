@@ -24,5 +24,12 @@ class UserController < ApplicationController
 
   end
 
+  def keyword_destroy
+    keyword_id = params[:id]
+    item = Keyword.find(keyword_id)
+    item.destroy
+    render json: item
+  end
+
 
 end
