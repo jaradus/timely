@@ -145,22 +145,15 @@ li.more_info_button {
   padding-bottom: 10px;
   padding-left : 20px;
   padding-right : 20px;
-  background-color: #4c4c4c;
-  color: #cccccc;
+  background-color: #324a85;
+  color: #e4e4e4;
   display: inline-block;
   margin-top: 5px;
   margin-left: 5px;
 }
 
-.keyword-container-hover {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  transition: 0.5s;
-  opacity: 0;
-}
-
-:hover .keyword-container-hover {
-  opacity: 1;
+.keyword-container:hover {
+  background: #ff6666;
+  color: #191919;
+  text-decoration: line-through;
 }
