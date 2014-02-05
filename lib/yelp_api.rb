@@ -110,8 +110,6 @@ class YelpApi
 			 	end
 			 end
 
-binding.pry 
-
 			#Create our own YelpSite data object with 
 			#JUST The data we're interested in
 			siteclassobject = YelpSite.new(
