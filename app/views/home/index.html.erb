@@ -2,9 +2,8 @@
 
 <div id="location"/>
 
-<!-- Iterate through Yelp results -->
-<!-- set @sites to Site.all in HomeController? -->
 <div id="main_container">
+    <div id="loading_screen"></div>
     <div id="site_container">
     </div>
 </div>
@@ -14,13 +13,3 @@
 <% else %>
   <img src=<%= @map_image  %>>
 <% end %>
-
-<!-- previous code inside div-site container -->
-<!--       <%# @sites.each do |site| %>
-    <div class="site_name"> <%# site.name %> </div>
-    <div class="site_yelp_rating"> <%# site.yelp_rating %> </div>
-    <div class="site_address"> <%# site.address %> </div>
-    <div class="site_phone_number"> <%# site.phone_number %> </div>
-    <div class="more_info_junk hide"> <%# site.description %> </div>
-    <button class="more_info_button">More Info</button>
-    <%# end %> -->

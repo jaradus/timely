@@ -61,7 +61,17 @@ div#error_explanation ul{
 
 /* Overriding Bootstrap's default font size for buttons */
 .btn {
-	font-size: 18px;
+	font-size: 1.2em;
+}
+
+.btn-xs {
+  font-size: 1em;
+}
+
+.content-input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: .8em;
 }
 
 div.devise {
@@ -123,12 +133,16 @@ ul {
 }
 
 li {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
 }
 
 li.name {
 	font-size: 1.6em;
+}
+
+li.more_info_button {
+  text-align: center;
 }
 
 .site-container {
@@ -151,22 +165,15 @@ li.name {
   padding-bottom: 10px;
   padding-left : 20px;
   padding-right : 20px;
-  background-color: #4c4c4c;
-  color: #cccccc;
+  background-color: #324a85;
+  color: #e4e4e4;
   display: inline-block;
   margin-top: 5px;
   margin-left: 5px;
 }
 
-.keyword-container-hover {
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  -ms-transition: 0.5s;
-  transition: 0.5s;
-  opacity: 0;
-}
-
-:hover .keyword-container-hover {
-  opacity: 1;
+.keyword-container:hover {
+  background: #ff6666;
+  color: #191919;
+  text-decoration: line-through;
 }
