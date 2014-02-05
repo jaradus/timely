@@ -20,10 +20,28 @@ form {
 	color: #000000;
 }
 
+div#error_explanation h3 {
+	color: red;
+}
+div#error_explanation ul li{
+	text-align: left;
+}
+div#error_explanation ul{
+	padding-left: 0;
+}
+
 #devise_sign_up_button_id a{
 	display: block;
-	width: 85px; /* This is perfect for "Sign Up" but nothing else :-( */
-/*	width: 40%;*/
+	width: 85px;
+	background-color: rgb(192, 192, 192);
+	padding: 0.4em 0.3em 0.4em 0.3em;
+	text-align: center;
+	border-radius: 5px;
+	color: black;
+}
+#devise_sign_in_button_id a{
+	display: block;
+	width: 85px;
 	background-color: rgb(192, 192, 192);
 	padding: 0.4em 0.3em 0.4em 0.3em;
 	text-align: center;
