@@ -124,7 +124,8 @@ var pref = {
   prefRender: function(data){
 
     // Removes any keywords from the tab content area
-    $('.tab-pane').empty();
+    $('.keyword-container').empty();
+    $('.keyword-container').remove();
 
     pref.keywords = data;
 
