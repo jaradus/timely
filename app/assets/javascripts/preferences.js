@@ -51,7 +51,6 @@ var pref = {
 
   prefRender: function(data){
     var keywordContainer = ["<div class='keyword-container'></div>"];
-
     pref.keywords = data;
 
     // Renders morning keywords
@@ -63,27 +62,31 @@ var pref = {
     };
     // Renders noon keywords
     if (pref.keywords.noon.length > 0) {
-      for (var i = 0; i < pref.keywords.noon.length; i++) {
+      $.each(pref.keywords.noon,function(i,v){
         pref.information.$noonContent.append(keywordContainer);
-      };
+        pref.information.$noonContent.children().last().append(v['keyword']);
+      });
     };
     // Renders afternoon keywords
     if (pref.keywords.afternoon.length > 0) {
-      for (var i = 0; i < pref.keywords.afternoon.length; i++) {
+      $.each(pref.keywords.afternoon,function(i,v){
         pref.information.$afternoonContent.append(keywordContainer);
-      };
+        pref.information.$afternoonContent.children().last().append(v['keyword']);
+      });
     };
     // Renders evening keywords
     if (pref.keywords.evening.length > 0) {
-      for (var i = 0; i < pref.keywords.evening.length; i++) {
+      $.each(pref.keywords.evening,function(i,v){
         pref.information.$eveningContent.append(keywordContainer);
-      };
+        pref.information.$eveningContent.children().last().append(v['keyword']);
+      });
     };
     // Renders night keywords
     if (pref.keywords.night.length > 0) {
-      for (var i = 0; i < pref.keywords.night.length; i++) {
+      $.each(pref.keywords.night,function(i,v){
         pref.information.$nightContent.append(keywordContainer);
-      };
+        pref.information.$nightContent.children().last().append(v['keyword']);
+      });
     };
 
   }
