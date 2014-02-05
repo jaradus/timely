@@ -113,12 +113,16 @@ ul {
 }
 
 li {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-align: center;
 }
 
 li.name {
 	font-size: 1.6em;
+}
+
+li.more_info_button {
+  text-align: center;
 }
 
 .site-container {
