@@ -97,7 +97,7 @@ var pref = {
     }
 
     // when all is said and done...
-    // add the task to the tasks array
+    // add the keyword to the keywords array
 
     pref.local_keyword_repo.push(this);
 
@@ -115,7 +115,11 @@ var pref = {
         pref.local_keyword_repo.push(item);
 
         pref.information.$morningContent.append(keywordContainer);
-        pref.information.$morningContent.children().last().append(v['keyword']);
+        pref.information.$morningContent.children().last().append(v.keyword);
+        
+        // pref.information.$morningContent.children().each(item,function(k,v){
+        //   $(v).append("x")
+        // });
       });
     };
     // Renders noon keywords
@@ -126,7 +130,7 @@ var pref = {
         pref.local_keyword_repo.push(item);
 
         pref.information.$noonContent.append(keywordContainer);
-        pref.information.$noonContent.children().last().append(v['keyword']);
+        pref.information.$noonContent.children().last().append(v.keyword);
       });
     };
     // Renders afternoon keywords
@@ -137,7 +141,7 @@ var pref = {
         pref.local_keyword_repo.push(item);
 
         pref.information.$afternoonContent.append(keywordContainer);
-        pref.information.$afternoonContent.children().last().append(v['keyword']);
+        pref.information.$afternoonContent.children().last().append(v.keyword);
       });
     };
     // Renders evening keywords
@@ -148,7 +152,7 @@ var pref = {
         pref.local_keyword_repo.push(item);
 
         pref.information.$eveningContent.append(keywordContainer);
-        pref.information.$eveningContent.children().last().append(v['keyword']);
+        pref.information.$eveningContent.children().last().append(v.keyword);
       });
     };
     // Renders night keywords
@@ -159,7 +163,7 @@ var pref = {
         pref.local_keyword_repo.push(item);
 
         pref.information.$nightContent.append(keywordContainer);
-        pref.information.$nightContent.children().last().append(v['keyword']);
+        pref.information.$nightContent.children().last().append(v.keyword);
       });
     };
 
