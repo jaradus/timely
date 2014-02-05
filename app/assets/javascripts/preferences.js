@@ -90,8 +90,8 @@ var pref = {
         // data: {"id": id},
         success: function(data){
           // data is the newly created task that Rails sends back
-          pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self)
-          pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1)
+          pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self);
+          pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1);
         }
       })
     }
@@ -99,28 +99,31 @@ var pref = {
     // when all is said and done...
     // add the keyword to the keywords array
 
-    pref.local_keyword_repo.push(this);
+    // pref.local_keyword_repo.push(this);
 
   },
 
+
+  renderAndStore: function(keywords_for_period_of_time,contentTab){
+    $.each(keywords_for_period_of_time,function(i,v){
+
+      // Creates a new Keyword object, and pushes it into the local_keyword_repo
+      item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
+      pref.local_keyword_repo.push(item);
+
+      var $template = $("<div>").addClass('keyword-container').text(v.keyword);
+      contentTab.append($template);
+
+    });
+  },
+
   prefRender: function(data){
-    var keywordContainer = ["<div class='keyword-container'></div>"];
+
     pref.keywords = data;
 
     // Renders morning keywords
     if (pref.keywords.morning.length > 0) {
-      $.each(pref.keywords.morning,function(i,v){
-        // Creates a new Keyword object, and pushes it into the local_keyword_repo
-        item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-        pref.local_keyword_repo.push(item);
-
-        pref.information.$morningContent.append(keywordContainer);
-        pref.information.$morningContent.children().last().append(v.keyword);
-        
-        // pref.information.$morningContent.children().each(item,function(k,v){
-        //   $(v).append("x")
-        // });
-      });
+      pref.renderAndStore(pref.keywords.morning,pref.information.$morningContent);
     };
     // Renders noon keywords
     if (pref.keywords.noon.length > 0) {
