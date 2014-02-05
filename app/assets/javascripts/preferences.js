@@ -115,6 +115,7 @@ var pref = {
         // data is the newly created task that Rails sends back
         // pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self);
         // pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1);
+
         pref.getKeywords();
       }
     })
@@ -122,9 +123,9 @@ var pref = {
 
   prefRender: function(data){
 
-    console.log(pref.$tabContent);
-    // pref.$tabContent.remove();
-    // pref.$tabContent.empty();
+    // Removes any keywords from the tab content area
+    $('.tab-pane').empty();
+
     pref.keywords = data;
 
     // Renders morning keywords
