@@ -15,8 +15,6 @@ class HomeController < ApplicationController
     longitude  = params[:longitude].to_f
     local_time = params[:local_time].to_i
 
-    binding.pry
-       #if statement if user is not logged in 
 
     @results = lat_lon_keyword_search(latitude, longitude, get_keywords(local_time, current_user))
 
