@@ -14,7 +14,8 @@ Timely::Application.routes.draw do
   get '/scooterTest' => 'home#scooterTest'
 
   resources :keywords
-
+  # used to initialize first users
+  devise_for :users, :controllers => {:registrations => "registrations"}
 
 
 end

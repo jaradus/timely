@@ -1,5 +1,5 @@
 var renderYelpItem = function(item){
-	// var $div = $("#site_container");
+	// var $div  = $("#site_container");
 	var $ul = $("<ul>").addClass("list");  //col-md-6 col-md-offset-3
 
 	// var $image = $("<img>").attr("src", item.image_url);
@@ -13,6 +13,7 @@ var renderYelpItem = function(item){
 	//should hide until user clicks on 'more info' button
 	//var $review_li = $("<li>").addClass("phone_number").text(item.review);
 
+// slidetoggle <-- lookitup
 	$more_info_button.on("click", function(){
 		if ($(".more_info_junk").hasClass("hide")){
 			$more_info_button.text("Less Info");
