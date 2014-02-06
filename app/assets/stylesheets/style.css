@@ -2,15 +2,15 @@ html {
 	height: 100%
 }
 
+
 body { 
-	height: 100%; margin: 0; padding: 0;
-	background-image: url('/assets/background.jpg');
+	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
-	background-repeat: no-repeat;
-	font-size: 18px;
-	color: #ffffff;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	background-attachment: fixed;
 }
+
+.navbar { margin-bottom: 0px; }
+
 
 main {
   margin-top: 0px;
