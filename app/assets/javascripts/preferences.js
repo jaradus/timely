@@ -2,6 +2,7 @@ var pref = {
 
   initialize: function(){
     pref.keywords
+    pref.user_id
     pref.local_keyword_repo = []
     pref.index_of_deleted_keywords = []
     pref.$tabContent = $('.tab-content')
@@ -24,6 +25,7 @@ var pref = {
       $nightContent      : $('#nightContent')
     }
 
+    pref.getUserId();
     pref.nightwatch();
     pref.getKeywords();
 
@@ -42,7 +44,6 @@ var pref = {
 
   // Retrieves the user's keywords
   getKeywords: function(){
-
     $.ajax({
       url: '/keywords',
       method: 'get',
@@ -53,27 +54,38 @@ var pref = {
   },
 
   // Keyword Constructor
-  Keyword: function(word, period_of_time, id){
+  Keyword: function(keyword, period_of_time, user_id){
     var self = this;
-    this.keyword = word;
+    this.keyword = keyword;
     this.period_of_time = period_of_time;
-    this.id = id;
+    this.id
+    this.user_id = user_id;
 
     this.create = function(){
+      // "A property’s name can be any string, including the empty string. The quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word. So quotes are required around "first-name", but are optional around first_name. Commas are used to separate the pairs."
+
+      // Crockford, Douglas (2008-05-08). JavaScript: The Good Parts: The Good Parts (Kindle Locations 425-428). O'Reilly Media. Kindle Edition. 
+
+      // NOTE: THIS IS NOT ENTIRELY ACCURATE MR. CROCKFORD. Javascript cannot parse that second _ in period_of_time. It must be in quotes.
+
       var params = {
-        word: {
-          keyword: self.word,
-          period_of_time: self.period_of_time
-        }
-      }
+                    keyword: self.keyword,
+                    "period_of_time": self.period_of_time,
+                    user_id: self.user_id
+                    };
+
+                    console.log(params)
+
       $.ajax({
         url: "/keywords",
-        type: "post",
+        type: "POST",
         dataType: "json",
         data: params,
         success: function(data){
           // data is the newly created task that Rails sends back
+          console.log(data+" was created")
           self.id = data.id;
+          pref.getKeywords();
         }
       })
     }
@@ -90,8 +102,8 @@ var pref = {
     $.each(keywords_for_period_of_time,function(i,v){
 
       // Creates a new Keyword object, and pushes it into the local_keyword_repo
-      item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
-      pref.local_keyword_repo.push(item);
+      // item = new pref.Keyword(v.keyword,v.period_of_time,v.id);
+      // pref.local_keyword_repo.push(item);
 
       // (1) This is awesome. (2) The next line is a template for our the div containg the keyword and then the word itself
       var $template = $("<div>").addClass('keyword-container').text(v.keyword);
@@ -111,7 +123,7 @@ var pref = {
       type: "DELETE",
       dataType: "json",
       success: function(data){
-        console.log(data+" destroyed");
+        console.log(data.keyword+" destroyed");
         // data is the newly created task that Rails sends back
         // pref.index_of_deleted_keywords = pref.local_keyword_repo.indexOf(self);
         // pref.local_keyword_repo.splice(pref.index_of_deleted_keywords,1);
@@ -121,11 +133,25 @@ var pref = {
     })
   },
 
+  getUserId: function(){
+    $.ajax({
+      url: '/user/id',
+      type: 'get',
+      dataType: 'json',
+      success: function(data){
+        pref.user_id = data;
+      }
+    })
+  },
+
   prefRender: function(data){
 
     // Removes any keywords from the tab content area
     $('.keyword-container').empty();
     $('.keyword-container').remove();
+
+    // Removes any event handlers to prevent linear watching
+    pref.$tabContent.off();
 
     pref.keywords = data;
 
@@ -152,14 +178,26 @@ var pref = {
 
     // Add event handler to the entire tab content div
     pref.$tabContent.on('click', function(event) {
-        console.log($(event.target).data().id);
         // Retrieves the div's unique ID as located in the db
         var id_of_keyword_to_delete = $(event.target).data();
         if (id_of_keyword_to_delete.id) {
           pref.destroyKeyword(id_of_keyword_to_delete);
-        } else {
-          console.log("Where'd u click");
         };
+        if ($(event.target).hasClass("btn")) {
+          console.log("clicked");
+          var $submit_button = $(event.target);
+          var $submit_input = $submit_button.parent().children()[0];
+          var $submit_input_content = $($submit_input).val().toLowerCase();
+          
+          if ($submit_input_content) {
+            var $period_of_time = $submit_input.id.split('_')[0];
+            var new_keyword = new pref.Keyword($submit_input_content, $period_of_time, pref.user_id);
+            var $submit_input_content = $($submit_input).val('');
+            console.log(new_keyword);
+            new_keyword.create()
+          }
+
+        }
 
     });
 

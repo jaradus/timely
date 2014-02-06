@@ -60,7 +60,6 @@ var sendLocation = function(lat, lon, time) {
             };
 
   sendUserData(params);
-
 }
 
 var sendUserData = function sendUserData(params) {

@@ -20,7 +20,11 @@ class UserController < ApplicationController
                       }
 
     render json: @user_keywords
+  end
 
+  def user_id
+
+    render json: current_user.id
 
   end
 
@@ -28,7 +32,23 @@ class UserController < ApplicationController
     keyword_id = params[:id]
     item = Keyword.find(keyword_id)
     item.destroy
+
     render json: item
+  end
+
+  def keyword_create
+
+    word_data = {
+                keyword: params[:keyword],
+                period_of_time: params[:period_of_time],
+                user_id: params[:user_id].to_i
+                }
+
+
+    new_keyword = Keyword.create(word_data)
+
+    render json: new_keyword
+
   end
 
 
