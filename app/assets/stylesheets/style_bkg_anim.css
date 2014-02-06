@@ -16,7 +16,7 @@
 }
 #sun_yellow{
     position:absolute;
-    left:45%;
+    left:75%;
     top:50%;
     width:150px;
     height:152px;
@@ -25,7 +25,7 @@
 }
 #sun_red{
     position:absolute;
-    left:45%;
+    left:75%;
     top:50%;
     width:150px;
     height:152px;
@@ -74,7 +74,7 @@
 }
 #moon{
     position:absolute;
-    left:45%;
+    left:75%;
     top:60%;
     width:168px;
     height:168px;
