@@ -15,7 +15,7 @@ var recommendationsView = {
 
       // Renders the recommendation on the DOM
       console.log('Render called');
-      recommendationsView.RecommendationView(rec);
+      new recommendationsView.RecommendationView(rec);
     })
 
   },
@@ -63,7 +63,7 @@ var recommendationsView = {
                           self.rec.categories,
                         "</li>",
                         "<li>",
-                          "<img src="+self.rec.medium_stars_url+"/>",
+                          "<img src='"+self.rec.medium_stars_url+"'>",
                         "</li>",
                         "<li>",
                           "<div class='more_info_junk' id='"+smoosh+"'>",
@@ -138,14 +138,13 @@ var recommendationsView = {
       return html_array.join("");
     },
 
-    // this.render = function(){
-    //   // Compiles the HTML to load into the DOM
-    //   this.element = this.template();
-    //   console.log(this.element);
-    //   return this.element;
-    // }
+    this.render = function(){
+      // Compiles the HTML to load into the DOM
+      this.element = this.template();
+      return this.element;
+    }
 
-    this.template();
+    return this.render();
 
   }
 
