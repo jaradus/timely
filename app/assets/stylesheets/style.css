@@ -9,6 +9,11 @@ body {
 	background-attachment: fixed;
 }
 
+
+#main_container{
+	z-index: 1;
+}
+
 .navbar { margin-bottom: 0px; }
 
 

@@ -12,7 +12,7 @@
 #sky{
     background:#fff url("../assets/sky.png") repeat-x top left;
     /*background:#fff url(../images/sky.png) repeat-x top left;*/
-    z-index:1;
+    z-index:-6;
 }
 #sun_yellow{
     position:absolute;
@@ -21,7 +21,7 @@
     width:150px;
     height:152px;
     background:transparent url("../assets/sun.png") no-repeat center center;
-    z-index:2;
+    z-index:-5;
 }
 #sun_red{
     position:absolute;
@@ -30,13 +30,13 @@
     width:150px;
     height:152px;
     background:transparent url("../assets/sun2.png") no-repeat center center;
-    z-index:2;
+    z-index:-5;
     opacity:0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 #clouds{
     background:transparent url("../assets/clouds.png") repeat-x top left;
-    z-index:3;
+    z-index:-4;
 }
 #ground{
     position:absolute;
@@ -46,18 +46,18 @@
     width:100%;
     height:232px;
     background:transparent url("../assets/ground.png") repeat-x bottom center;
-    z-index:3;
+    z-index:-4;
 }
 #night{
     background-color:#000;
-    z-index:4;
+    z-index:-3;
     opacity:0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 #stars{
     bottom:200px;
     background:transparent url("../assets/stars.png") repeat bottom center;
-    z-index:5;
+    z-index:-2;
     opacity:0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
@@ -68,7 +68,7 @@
     width:126px;
     height:80px;
     background:transparent url("../assets/star.png") no-repeat 80px -200px;
-    z-index:5;
+    z-index:-2;
     opacity:0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
@@ -79,7 +79,7 @@
     width:168px;
     height:168px;
     background:transparent url("../assets/moon.png") no-repeat center center;
-    z-index:6;
+    z-index:-1;
     opacity:0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
@@ -93,7 +93,7 @@
     width:500px;
     height:300px;
     background:transparent asset-url("title.png", image) no-repeat center center;
-    z-index:6;
+    z-index:-1;
     opacity:0;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
@@ -104,7 +104,7 @@
     width:176px;
     height:50px;
     background:transparent asset-url("back.png", image) no-repeat center center;
-    z-index:6;
+    z-index:-1;
     outline:none;
     cursor:pointer;
     opacity:0;
