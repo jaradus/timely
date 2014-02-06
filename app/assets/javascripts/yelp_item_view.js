@@ -1,7 +1,7 @@
 var renderYelpItem = function(item){
-	var smoosh = item.location.replace(/\s/g,"");
-	var $div  = $("#site_container");
-	var $ul = $("<ul>").addClass("list");  //col-md-6 col-md-offset-3
+	var smoosh = 'a'+item.location.replace(/\s/g,"");
+	//var $div  = $("#site_container");
+	var $ul = $("<ul>").addClass("list").attr("id",smoosh);
 
 	// var $image = $("<img>").attr("src", item.image_url);
 
@@ -10,30 +10,28 @@ var renderYelpItem = function(item){
 	var $cross_streets_li = $("<li>").addClass("cross_streets").text(item.cross_streets);
 	var $phone_num_li = $("<li>").addClass("phone_num").text(item.phone_num);
 	var $rating_img = $("<img>").attr("src", item.medium_stars_url);
-	var $more_info_button = $("<li>").append($("<button>").addClass("more_info_button").attr("id",smoosh).text("More Info"));
+	var $hidden_info = $("<li>").append($("<div>").addClass("more_info_junk").addClass("hide").attr("id", smoosh).text("MORE INFO HERE OK"));
+	var $more_info_button = $("<li>").append($("<button>").addClass("more_info_button").attr("id",smoosh).text("==="));
+
 	//should hide until user clicks on 'more info' button
 	//var $review_li = $("<li>").addClass("phone_number").text(item.review);
 
 	var smooshId = '#'+smoosh;
 
 // slidetoggle <-- lookitup
-$div.on('click', function(event) {
+$more_info_button.on('click', function(event) {
 
-  $btn = $(event.target)[0];
+  btn_id = event.target["id"];
+
+  var $hidden_info = $('div.more_info_junk#'+btn_id);
+
+    if (($hidden_info).hasClass("hide")){
+      $($hidden_info).removeClass("hide");
+    } else {
+      $($hidden_info).addClass("hide");
+    }
 
 });
-
-// ($smooshId).on("click", function(){
-//   if (smooshId) {
-//     if ($(".more_info_junk").hasClass("hide")){
-//       $more_info_button.text("Less Info");
-//       $(".more_info_junk").removeClass("hide");
-//     } else {
-//       $more_info_button.text("More Info");
-//       $(".more_info_junk").addClass("hide");
-//     }
-// 	}
-// })
 
 $ul
 .append($name_li)
@@ -41,13 +39,12 @@ $ul
 .append($cross_streets_li)
 .append($phone_num_li)
 .append($rating_img)
-.append("<li><div class='more_info_junk hide'>MORE INFO GOES HERE</div></li>")
+.append($hidden_info)
 .append($more_info_button)
 .append("<br/>")
 .append("<hr/>")
 ;
 
-console.log(item);
 return $ul;
 
 }
