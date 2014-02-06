@@ -32,8 +32,8 @@ var renderYelpItem = function(item){
 	$ul.on('click', function(event) {
 		var $hidden = $(this);
 		var $moreContent = $hidden.find('div.more_info_junk');
-		console.log($hidden);
-		console.log($moreContent);	
+		// console.log($hidden);
+		// console.log($moreContent);	
 
 		if ($(window).width() < 480) {
 			if ($hidden.find('div.more_info_junk').hasClass("hide")){
