@@ -55,7 +55,6 @@ class RegistrationsController < Devise::RegistrationsController
 					)
 			}
 
-			binding.pry
   end
 
   def update
