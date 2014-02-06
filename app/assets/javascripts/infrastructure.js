@@ -105,6 +105,10 @@ $(function(){
 
 })
 
+$( window ).scroll(function() {
+  var scroll = $(window).scrollTop();
+  $("header").css("height", 100 - 1.5*scroll);
+});
 
 
 
