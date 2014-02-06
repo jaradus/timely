@@ -14,6 +14,7 @@ body {
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
+
 }
 
 
@@ -167,7 +168,7 @@ li.more_info_button {
 }
 
 .more_info {
-  color: #e6e6e6;
+  color: #00c4ff;
   text-align: left;
 }
 
@@ -176,9 +177,15 @@ li.more_info_button {
 	width: 100%;
 }
 
+.list {
+	background-color: rgba(255,255,255,0.30);
+	border-radius: 15px;
+	max-width: 70%;
+}
+
 .tab-content {
 	background: #ffffff;
-	color: #555555;
+	color: #545454;
 	padding: 10px;
 	padding-left: 15px;
 	padding-right: 15px;

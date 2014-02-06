@@ -48,6 +48,20 @@ var recommendationsView = {
     // Applies that unique ID to a <ul>
     var $ul = $("<ul>").addClass("list").attr("id",smoosh);
 
+    // Add Event Handler
+    $ul.on('click', function(event) {
+      var $hidden = $(this);
+      var $moreContent = $hidden.find('div.more_info_junk');
+
+      if ($(window).width() < 480) {
+        if ($hidden.find('div.more_info_junk').hasClass("hide")){
+          $moreContent.removeClass("hide");
+        } else {
+          $moreContent.addClass("hide");
+        }
+      }
+    });
+
     // Creates a jQuery lookup to the unique ID
     var smooshId = '#'+smoosh;
 
@@ -66,17 +80,16 @@ var recommendationsView = {
                           "<img src='"+self.rec.medium_stars_url+"'>",
                         "</li>",
                         "<li>",
-                          "<div class='more_info_junk' id='"+smoosh+"'>",
+                          "<div class='more_info_junk hide' id='"+smoosh+"'>",
                             recommendationsView.RecommendationMoreInfoView(this.rec),
                           "</div>",
                         "</li>",
                         "<li>",
-                          "<button class='more_info_button' id="+smoosh+">",
+                          "<button class='more_info_button' id='"+smoosh+"_button''>",
                             "===",
                           "</button>",
                         "</li>",
-                        "<br/>",
-                        "<hr/>"
+                        "<br/>"
                         ]
 
       return html_array.join("");
@@ -87,25 +100,23 @@ var recommendationsView = {
       this.$element = $( this.template() );
       $("#site_container").prepend($ul);
       $ul.append(this.$element);
-      // this.buttonWatcher();
-    }
+      var $button = $('#'+smoosh+'_button');
 
-    this.buttonWatcher = function() {
-      // Add Event Handler
-      $more_info_button.on('click', function(event) {
-
-        btn_id = event.target["id"];
-
-        var $hidden_info = $('div.more_info_junk#'+btn_id);
+      $button.on('click', function(event) {
+        if ($(window).width() > 480) {
+          btn_id_button = event.target["id"];
+          btn_id = btn_id_button.replace('_button','');
+          var $hidden_info = $('div.more_info_junk#'+btn_id);
 
           if (($hidden_info).hasClass("hide")){
             $($hidden_info).removeClass("hide");
           } else {
             $($hidden_info).addClass("hide");
           }
-
+        }
       });
-    }
+
+    },
 
     this.render();
 
