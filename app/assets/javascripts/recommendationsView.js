@@ -63,16 +63,16 @@ var recommendationsView = {
                           self.rec.categories,
                         "</li>",
                         "<li>",
-                          self.rec.medium_stars_url,
+                          "<img src="+self.rec.medium_stars_url+"/>",
                         "</li>",
                         "<li>",
-                          "<div class='more_info_junk hide' id='"+smoosh+"'>",
-                            // Call recommendationsView.RecommendationMoreInfoView(rec) here
+                          "<div class='more_info_junk' id='"+smoosh+"'>",
+                            recommendationsView.RecommendationMoreInfoView(this.rec),
                           "</div>",
                         "</li>",
                         "<li>",
                           "<button class='more_info_button' id="+smoosh+">",
-                            ===,
+                            "===",
                           "</button>",
                         "</li>",
                         "<br/>",
@@ -80,41 +80,35 @@ var recommendationsView = {
                         ]
 
       return html_array.join("");
+    },
+
+    this.render = function() {
+      // Compiles the HTML to load into the DOM
+      this.$element = $( this.template() );
+      $("#site_container").prepend($ul);
+      $ul.append(this.$element);
+      // this.buttonWatcher();
     }
 
-    
+    this.buttonWatcher = function() {
+      // Add Event Handler
+      $more_info_button.on('click', function(event) {
 
-    // Add Event Handler
-    $more_info_button.on('click', function(event) {
+        btn_id = event.target["id"];
 
-      btn_id = event.target["id"];
+        var $hidden_info = $('div.more_info_junk#'+btn_id);
 
-      var $hidden_info = $('div.more_info_junk#'+btn_id);
+          if (($hidden_info).hasClass("hide")){
+            $($hidden_info).removeClass("hide");
+          } else {
+            $($hidden_info).addClass("hide");
+          }
 
-        if (($hidden_info).hasClass("hide")){
-          $($hidden_info).removeClass("hide");
-        } else {
-          $($hidden_info).addClass("hide");
-        }
+      });
+    }
 
-    });
+    this.render();
 
-    $ul
-    .append($name_li)
-    .append($address_li)
-    .append($cross_streets_li)
-    .append($phone_num_li)
-    .append($rating_img)
-    .append($hidden_info)
-    .append($more_info_button)
-    .append("<br/>")
-    .append("<hr/>")
-    ;
-
-    console.log($ul);
-    return $ul;
-
-    // recommendationsView.RecommendationMoreInfoView(rec);
   },
 
   RecommendationMoreInfoView: function(rec){
@@ -144,13 +138,14 @@ var recommendationsView = {
       return html_array.join("");
     },
 
-    this.render = function(){
-      // Compiles the HTML to load into the DOM
-      this.$element = $( this.template() );
-      $('#site_container').append(this.$element);
-    }
+    // this.render = function(){
+    //   // Compiles the HTML to load into the DOM
+    //   this.element = this.template();
+    //   console.log(this.element);
+    //   return this.element;
+    // }
 
-    this.render();
+    this.template();
 
   }
 
