@@ -10,27 +10,6 @@
     <%= javascript_include_tag "application" %>
 
  
-    <script type="text/javascript">
-        $(function() {
-            $('#sun_yellow').animate({'top':'96%','opacity':0.4}, 12000,function(){
-                $('#stars').animate({'opacity':1}, 5000,function(){
-                    $('#moon').animate({'top':'30%','opacity':1}, 5000, function(){
-                        $('#sstar').animate({'opacity':1}, 300);
-                        $('#sstar').animate({
-                            'backgroundPosition':'0px 0px','top':'15%', 'opacity':0
-                        }, 500,function(){
-                            $('#title').animate({'opacity':1}, 1000);
-                            $('#back').animate({'opacity':1}, 3000);
-                        });
-                    });
-                });
-            });
-            $('#sun_red').animate({'top':'96%','opacity':0.8}, 12000);
-            $('#sky').animate({'backgroundColor':'#4F0030'}, 18000);
-            $('#clouds').animate({'backgroundPosition':'1000px 0px','opacity':0}, 30000);
-            $('#night').animate({'opacity':0.8}, 20000);
-        });
-    </script>
 
     <%= csrf_meta_tags %>
   </head>
@@ -55,7 +34,7 @@
 
           <!-- Navbar right -->
           <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
+            <li class="dropdown hidden-xs">
 
             <!-- If the user is logged in, we want to set up the  -->
             <!-- right-hand side of the navbar to allow the user -->

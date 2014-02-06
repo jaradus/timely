@@ -10,13 +10,16 @@ html {
   -o-transform: rotate(-180deg);
 }
 
-body { 
+/*body { 
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
 
-}
+}*/
 
+img {
+  margin-left: 0;
+}
 
 #main_container{
 	z-index: 1;
@@ -24,6 +27,12 @@ body {
 
 .navbar { margin-bottom: 0px; }
 
+.more_info_button.btn {
+  margin-top: 5px;
+  padding-left: 28px;
+  padding-right: 28px;
+  font-size: 1em;
+}
 
 main {
   margin-top: 0px;
@@ -49,7 +58,6 @@ form {
 	transform:rotate(310deg);
 	-ms-transform:rotate(310deg); /* IE 9 */
 	-webkit-transform:rotate(310deg); /* Safari and Chrome */
-
 }
 
 div#error_explanation h3 {
@@ -168,7 +176,7 @@ li.more_info_button {
 }
 
 .more_info {
-  color: #00c4ff;
+/*  color: #00c4ff;*/
   text-align: left;
 }
 
@@ -181,6 +189,7 @@ li.more_info_button {
 	background-color: rgba(255,255,255,0.30);
 	border-radius: 15px;
 	max-width: 70%;
+  padding: 10px;
 }
 
 .tab-content {
@@ -211,8 +220,16 @@ li.more_info_button {
   text-decoration: line-through;
 }
 
+@media (max-width: 691px) {
+/* at 691px, the nav text should be centered */
+
+}
 
 @media (max-width: 480px) {
+  .list {
+    font-size: 12px;
+  }
   .more_info_button { display: none;}
-  .list { border: solid black 1px; padding: 10px; background: #fff;}
 }
+
+
