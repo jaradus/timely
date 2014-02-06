@@ -6,6 +6,27 @@
     <div id="loading_screen"></div>
     <div id="site_container"></div>
 </div>
+    <script type="text/javascript">
+        $(function() {
+            $('#sun_yellow').animate({'top':'96%','opacity':0.4}, 12000,function(){
+                $('#stars').animate({'opacity':1}, 5000,function(){
+                    $('#moon').animate({'top':'30%','opacity':1}, 5000, function(){
+                        $('#sstar').animate({'opacity':1}, 300);
+                        $('#sstar').animate({
+                            'backgroundPosition':'0px 0px','top':'15%', 'opacity':0
+                        }, 500,function(){
+                            // $('#title').animate({'opacity':1}, 1000);
+                            $('#back').animate({'opacity':1}, 3000);
+                        });
+                    });
+                });
+            });
+            $('#sun_red').animate({'top':'96%','opacity':0.8}, 12000,function(){$('#sun_red').hide();$('#sun_yellow').hide();});
+            $('#sky').animate({'backgroundColor':'#4F0030'}, 18000);
+            $('#clouds').animate({'backgroundPosition':'1000px 0px','opacity':0}, 30000);
+            $('#night').animate({'opacity':0.8}, 20000);
+        });
+    </script>
 
 <div id="sky"></div>
 <div id="sun_yellow"></div>

@@ -10,12 +10,12 @@ html {
   -o-transform: rotate(-180deg);
 }
 
-body { 
+/*body { 
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
 
-}
+}*/
 
 img {
   margin-left: 0;
