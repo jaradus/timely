@@ -10,6 +10,7 @@ var renderYelpItem = function(item){
 	var $cross_streets_li = $("<li>").addClass("cross_streets").text(item.cross_streets);
 	var $phone_num_li = $("<li>").addClass("phone_num").text(item.phone_num);
 	var $rating_img = $("<img>").attr("src", item.medium_stars_url);
+	
 	var $hidden_info = $("<li>").append($("<div>").addClass("more_info_junk").addClass("hide").attr("id", smoosh).text("MORE INFO HERE OK"));
 	var $more_info_button = $("<li>").append($("<button>").addClass("more_info_button").attr("id",smoosh).text("==="));
 

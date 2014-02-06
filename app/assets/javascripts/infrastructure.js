@@ -73,6 +73,7 @@ var sendUserData = function sendUserData(params) {
     success: function(data){
       // Return from the Yelp API call
       console.log("Data returned from Yelp");
+
       // Calls the Yelp Review render on success
       var yelp_recommendations = data;
       recommendationsView.initialize(yelp_recommendations);
