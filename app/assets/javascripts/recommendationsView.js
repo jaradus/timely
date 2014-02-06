@@ -85,14 +85,12 @@ var recommendationsView = {
                           "</div>",
                         "</li>",
                         "<li>",
-                          "<button class='more_info_button' id='"+smoosh+"_button'>",
-                            "===",
+                          "<button class='more_info_button btn btn-info btn-sm' id='"+smoosh+"_button'>",
+                            "Info",
                           "</button>",
                         "</li>",
                         "<br/>"
                         ]
-
-
 
       return html_array.join("");
     },
@@ -137,14 +135,11 @@ var recommendationsView = {
 
       var html_array = [
                         "<ul class='more_info'>",
-                          "<li class='location'>",
-                          "<strong>"+self.rec.address+'</strong>, '+self.rec.city+' '+self.rec.cross_streets,
-                          "</li>",
                           "<li class='phone_num'>",
-                          self.rec.phone_num,
+                            "<a href='tel:'"+self.rec.phone_num+"'>"+self.rec.phone_num+"</a>",
                           "</li>",
                           "<li class='map'>",
-                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=15&size=300x300&sensor=false'>",
+                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
                           "</li>"
                         ]
 

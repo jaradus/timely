@@ -17,6 +17,9 @@ body {
 
 }
 
+img {
+  margin-left: 0;
+}
 
 #main_container{
 	z-index: 1;
@@ -24,6 +27,12 @@ body {
 
 .navbar { margin-bottom: 0px; }
 
+.more_info_button.btn {
+  margin-top: 5px;
+  padding-left: 28px;
+  padding-right: 28px;
+  font-size: 1em;
+}
 
 main {
   margin-top: 0px;
