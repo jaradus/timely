@@ -1,6 +1,7 @@
 Timely::Application.routes.draw do
-  
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "registrations"}
+
+  # devise_for :users
 
   post '/api_call' => 'home#api_call'
   get '/api_call' => 'home#api_call'
@@ -16,7 +17,6 @@ Timely::Application.routes.draw do
 
   resources :keywords
   # used to initialize first users
-  devise_for :users, :controllers => {:registrations => "registrations"}
 
 
 end
