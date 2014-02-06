@@ -85,12 +85,14 @@ var recommendationsView = {
                           "</div>",
                         "</li>",
                         "<li>",
-                          "<button class='more_info_button' id='"+smoosh+"_button''>",
+                          "<button class='more_info_button' id='"+smoosh+"_button'>",
                             "===",
                           "</button>",
                         "</li>",
                         "<br/>"
                         ]
+
+
 
       return html_array.join("");
     },
