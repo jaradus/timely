@@ -64,6 +64,7 @@ var sendLocation = function(lat, lon, time) {
 }
 
 var sendUserData = function sendUserData(params) {
+  console.log("Requst made to Yelp API")
   $.ajax({
     url: '/api_call',
     method: 'post',
@@ -71,55 +72,22 @@ var sendUserData = function sendUserData(params) {
     data: params,
     // success: getYelp()
     success: function(data){
-      console.log("Returned data goes here:");
-      console.log(data);
+      // Return from the Yelp API call
+      console.log("Data returned from Yelp");
+      // Calls the Yelp Review render on success
+      var yelp_recommendations = data;
+      recommendationsView.initialize(yelp_recommendations);
 
-      var list_data = data;
+      // var list_data = data;
       //testing to see if object gets passed to renderYelpItem function
-      data.forEach(function(yelp_item_attr) {
-        var ul = renderYelpItem(yelp_item_attr);
-        $("#site_container").prepend(ul);
-      });
+      // data.forEach(function(yelp_item_attr) {
+      //   var ul = renderYelpItem(yelp_item_attr);
+      //   $("#site_container").prepend(ul);
+      // });
 
     }
   });
 }
-
-// Loading Screen while waiting for the API Ajax Return
-// ====================================================
-// var loading = {
-
-//   initialize: function() {
-//     var self = this;
-//     this.lines: 11 // The number of lines to draw
-//     this.length: 20 // The length of each line
-//     this.width: 10 // The line thickness
-//     this.radius: 30 // The radius of the inner circle
-//     this.corners: 1 // Corner roundness (0..1)
-//     this.rotate: 0 // The rotation offset
-//     this.direction: 1 // 1: clockwise, -1: counterclockwise
-//     this.color: '#000' // #rgb or #rrggbb or array of colors
-//     this.speed: 1 // Rounds per second
-//     this.trail: 68 // Afterglow percentage
-//     this.shadow: false // Whether to render a shadow
-//     this.hwaccel: false // Whether to use hardware acceleration
-//     this.className: 'spinner' // The CSS class to assign to the spinner
-//     this.zIndex: 2e9 // The z-index (defaults to 2000000000)
-//     this.top: 'auto' // Top position relative to parent in px
-//     this.left: 'auto' // Left position relative to parent in px
-//   };
-
-  // loading.$target = $('loading_screen');
-
-  // putLoading: function() {
-  //   new Spinner(loading.opts).spin(loading.$target);
-  // }
-
-  // removeLoading: function() {
-  //   this.stop();
-  // }
-
-// }
 
 // [5] When File has Completed Loading
 // ===================================
