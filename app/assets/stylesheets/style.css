@@ -58,7 +58,6 @@ form {
 	transform:rotate(310deg);
 	-ms-transform:rotate(310deg); /* IE 9 */
 	-webkit-transform:rotate(310deg); /* Safari and Chrome */
-
 }
 
 div#error_explanation h3 {
