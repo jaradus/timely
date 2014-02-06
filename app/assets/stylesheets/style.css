@@ -2,11 +2,23 @@ html {
 	height: 100%
 }
 
+.fa-clock-o {
+  font-size: 0.7em;
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+}
 
 body { 
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
+}
+
+
+#main_container{
+	z-index: 1;
 }
 
 .navbar { margin-bottom: 0px; }
@@ -190,4 +202,10 @@ li.more_info_button {
   background: #ff6666;
   color: #191919;
   text-decoration: line-through;
+}
+
+
+@media (max-width: 480px) {
+  .more_info_button { display: none;}
+  .list { border: solid black 1px; padding: 10px; background: #fff;}
 }
