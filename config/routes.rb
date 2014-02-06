@@ -7,8 +7,10 @@ Timely::Application.routes.draw do
 
   get '/keywords' => 'user#user_keywords'
   delete '/keywords/:id' => 'user#keyword_destroy'
+  post '/keywords' => 'user#keyword_create'
 
   get '/user/preferences' => 'user#preferences', as: 'edit_user_preferences'
+  get '/user/id' => 'user#user_id'
 
   root to: 'home#index'
 

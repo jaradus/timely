@@ -2,6 +2,7 @@ var pref = {
 
   initialize: function(){
     pref.keywords
+    pref.user_id
     pref.local_keyword_repo = []
     pref.index_of_deleted_keywords = []
     pref.$tabContent = $('.tab-content')
@@ -24,6 +25,7 @@ var pref = {
       $nightContent      : $('#nightContent')
     }
 
+    pref.getUserId();
     pref.nightwatch();
     pref.getKeywords();
 
@@ -53,22 +55,31 @@ var pref = {
   },
 
   // Keyword Constructor
-  Keyword: function(word, period_of_time, id){
+  Keyword: function(keyword, period_of_time, user_id){
     var self = this;
-    this.keyword = word;
+    this.keyword = keyword;
     this.period_of_time = period_of_time;
-    this.id = id;
+    this.id
+    this.user_id = user_id;
 
     this.create = function(){
+      // "A property’s name can be any string, including the empty string. The quotes around a property’s name in an object literal are optional if the name would be a legal JavaScript name and not a reserved word. So quotes are required around "first-name", but are optional around first_name. Commas are used to separate the pairs."
+
+      // Crockford, Douglas (2008-05-08). JavaScript: The Good Parts: The Good Parts (Kindle Locations 425-428). O'Reilly Media. Kindle Edition. 
+
+      // NOTE: THIS IS NOT ENTIRELY ACCURATE MR. CROCKFORD. Javascript cannot parse that second _ in period_of_time. It must be in quotes.
+
       var params = {
-        word: {
-          keyword: self.word,
-          period_of_time: self.period_of_time
-        }
-      }
+                    keyword: self.keyword,
+                    "period_of_time": self.period_of_time,
+                    user_id: self.user_id
+                    };
+
+                    console.log(params)
+
       $.ajax({
         url: "/keywords",
-        type: "post",
+        type: "POST",
         dataType: "json",
         data: params,
         success: function(data){
@@ -121,6 +132,17 @@ var pref = {
     })
   },
 
+  getUserId: function(){
+    $.ajax({
+      url: '/user/id',
+      type: 'get',
+      dataType: 'json',
+      success: function(data){
+        pref.user_id = data;
+      }
+    })
+  },
+
   prefRender: function(data){
 
     // Removes any keywords from the tab content area
@@ -160,8 +182,15 @@ var pref = {
         if ($(event.target).hasClass("btn")) {
           var $submit_button = $(event.target);
           var $submit_input = $submit_button.parent().children()[0];
-          var $submit_input_content = $($submit_input).val();
+          var $submit_input_content = $($submit_input).val().toLowerCase();
           
+          if ($submit_input_content) {
+            var $period_of_time = $submit_input.id.split('_')[0];
+            var new_keyword = new pref.Keyword($submit_input_content, $period_of_time, pref.user_id);
+            console.log(new_keyword);
+            new_keyword.create()
+          }
+
         }
 
     });
