@@ -66,7 +66,7 @@ var recommendationsView = {
                           "<img src='"+self.rec.medium_stars_url+"'>",
                         "</li>",
                         "<li>",
-                          "<div class='more_info_junk' id='"+smoosh+"'>",
+                          "<div class='more_info_junk hide' id='"+smoosh+"'>",
                             recommendationsView.RecommendationMoreInfoView(this.rec),
                           "</div>",
                         "</li>",
@@ -75,8 +75,7 @@ var recommendationsView = {
                             "===",
                           "</button>",
                         "</li>",
-                        "<br/>",
-                        "<hr/>"
+                        "<br/>"
                         ]
 
       return html_array.join("");
