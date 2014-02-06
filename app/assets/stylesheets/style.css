@@ -38,6 +38,18 @@ img {
   padding-left: 0;
 }
 
+.phone_num {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.phone_num a {
+  color: #0095fd;
+  font-size: 1.1em;
+  padding: 2px;
+  border-radius: 5px;
+}
+
 main {
   margin-top: 0px;
 }
