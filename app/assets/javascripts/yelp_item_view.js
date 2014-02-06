@@ -20,19 +20,41 @@ var renderYelpItem = function(item){
 	var smooshId = '#'+smoosh;
 
 // slidetoggle <-- lookitup
-$more_info_button.on('click', function(event) {
 
-  btn_id = event.target["id"];
+	$more_info_button.on('click', function(event) {
+		if ($(window).width() > 480) {
+			btn_id = event.target["id"];
 
-  var $hidden_info = $('div.more_info_junk#'+btn_id);
+			var $hidden_info = $('div.more_info_junk#'+btn_id);
 
-    if (($hidden_info).hasClass("hide")){
-      $($hidden_info).removeClass("hide");
-    } else {
-      $($hidden_info).addClass("hide");
-    }
+			if (($hidden_info).hasClass("hide")){
+				$($hidden_info).removeClass("hide");
+			} else {
+				$($hidden_info).addClass("hide");
+			}
+		}
+	});
 
-});
+
+	$ul.on('click', function(event) {
+		var $hidden = $(this);
+		var $moreContent = $hidden.find('div.more_info_junk');
+		console.log($hidden);
+		console.log($moreContent);	
+
+		if ($(window).width() < 480) {
+			if ($hidden.find('div.more_info_junk').hasClass("hide")){
+				$moreContent.removeClass("hide");
+			} else {
+				$moreContent.addClass("hide");
+			}
+		}
+	});
+
+	// remove the button when browswer width < 480
+	if ($(window).width() < 480) {
+		// hide the button
+	};
 
 $ul
 .append($name_li)
