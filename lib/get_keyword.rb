@@ -28,7 +28,11 @@
 						k.each do |word|
 							array << word.keyword
 						end
-						return array
+						if array.length < 3
+							return array
+						else
+							return array.sample(2)
+						end
 					end
 					if local_time.between?(1131,1300)
 						array = []
@@ -36,7 +40,11 @@
 						k.each do |word|
 							array << word.keyword
 						end
-						return array		
+						if array.length < 3
+							return array
+						else
+							return array.sample(2)
+						end
 					end
 					if local_time.between?(1301,1730)
 						array = []
@@ -44,7 +52,11 @@
 						k.each do |word|
 							array << word.keyword
 						end
-						return array
+						if array.length < 3
+							return array
+						else
+							return array.sample(2)
+						end
 					end
 					if local_time.between?(1731,2000)
 						array = []
@@ -52,7 +64,11 @@
 						k.each do |word|
 							array << word.keyword
 						end
-						return array
+						if array.length < 3
+							return array
+						else
+							return array.sample(2)
+						end
 					end
 					if 2001 < local_time || local_time < 300
 						array = []
@@ -60,7 +76,11 @@
 						k.each do |word|
 							array << word.keyword
 						end
-						return array
+						if array.length < 3
+							return array
+						else
+							return array.sample(2)
+						end
 					end
 				end
 			end
