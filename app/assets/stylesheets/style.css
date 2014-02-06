@@ -2,6 +2,13 @@ html {
 	height: 100%
 }
 
+.fa-clock-o {
+  font-size: 0.7em;
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+}
 
 body { 
 	background-image: url('/assets/background.jpg'); 

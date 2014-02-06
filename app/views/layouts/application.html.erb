@@ -5,6 +5,7 @@
     <title><%= content_for?(:title) ? yield(:title) : "Timely" %></title>
     <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Timely" %>">
     <link href='http://fonts.googleapis.com/css?family=Playfair+Display' rel='stylesheet' type='text/css'>
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -23,7 +24,7 @@
             <span class="icon-bar"></span>
           </button>
           <a class="navbar-brand" href=<%= root_path %>>
-            <div class="TimelyLogo">Timely</div>
+            <div class="TimelyLogo">Tim<i class="fa fa-clock-o"></i>ly</div>
           </a>
         </div>
 

@@ -1,9 +1,12 @@
 var recommendationsView = {
 
+  // var ul = renderYelpItem(yelp_item_attr);
+  // $("#site_container").prepend(ul);
+
   initialize: function(yelp_recommendations) {
     var pageElements = {
                         $loading: $('loading_screen'),
-                        $page:    $('site_container')  
+                        $page:    $('#site_container')  
                         };
 
     $(yelp_recommendations).each(function(){
@@ -27,6 +30,7 @@ var recommendationsView = {
     this.big_stars_url      = raw_api_data.big_stars_url,
     this.city               = raw_api_data.city,
     this.little_stars_url   = raw_api_data.little_stars_url,
+    this.medium_stars_url   = raw_api_data.medium_stars_url,
     this.rating             = raw_api_data.rating,
     this.state_code         = raw_api_data.state_code,
     this.url                = raw_api_data.url,
@@ -38,12 +42,91 @@ var recommendationsView = {
     this.rec      = rec;
     this.rec.view = self;
 
+    // Creates a flattened street address, with 'a' prepended to create a unique ID
+    var smoosh = 'a'+self.rec.address.replace(/\s/g,"");
+
+    // Applies that unique ID to a <ul>
+    var $ul = $("<ul>").addClass("list").attr("id",smoosh);
+
+    // Creates a jQuery lookup to the unique ID
+    var smooshId = '#'+smoosh;
+
+    this.template = function(){
+      var html_array = [
+                        "<li class='name'>",
+                          self.rec.name,
+                        "</li>",
+                        "<li class='location'>",
+                          "<strong>"+self.rec.address+'</strong>, '+self.rec.city+' '+self.rec.cross_streets,
+                        "</li>",
+                        "<li>",
+                          self.rec.categories,
+                        "</li>",
+                        "<li>",
+                          self.rec.medium_stars_url,
+                        "</li>",
+                        "<li>",
+                          "<div class='more_info_junk hide' id='"+smoosh+"'>",
+                            // Call recommendationsView.RecommendationMoreInfoView(rec) here
+                          "</div>",
+                        "</li>",
+                        "<li>",
+                          "<button class='more_info_button' id="+smoosh+">",
+                            ===,
+                          "</button>",
+                        "</li>",
+                        "<br/>",
+                        "<hr/>"
+                        ]
+
+      return html_array.join("");
+    }
+
+    
+
+    // Add Event Handler
+    $more_info_button.on('click', function(event) {
+
+      btn_id = event.target["id"];
+
+      var $hidden_info = $('div.more_info_junk#'+btn_id);
+
+        if (($hidden_info).hasClass("hide")){
+          $($hidden_info).removeClass("hide");
+        } else {
+          $($hidden_info).addClass("hide");
+        }
+
+    });
+
+    $ul
+    .append($name_li)
+    .append($address_li)
+    .append($cross_streets_li)
+    .append($phone_num_li)
+    .append($rating_img)
+    .append($hidden_info)
+    .append($more_info_button)
+    .append("<br/>")
+    .append("<hr/>")
+    ;
+
+    console.log($ul);
+    return $ul;
+
+    // recommendationsView.RecommendationMoreInfoView(rec);
+  },
+
+  RecommendationMoreInfoView: function(rec){
+    var self      = this;
+    this.rec      = rec;
+    this.rec.view = self;
+
     this.template = function(){
       var google_map_formatted_address = self.rec.address.replace(/ /g,'+');
       var google_map_formatted_city = self.rec.city.replace(' ','+');
       var google_map_formatted_state_code = self.rec.state_code.replace(' ','+');
       var google_location = google_map_formatted_address+','+google_map_formatted_city+','+google_map_formatted_state_code;
-      console.log(google_location)
 
       var html_array = [
                         "<ul class='more_info'>",
@@ -55,7 +138,7 @@ var recommendationsView = {
                           "</li>",
                           "<li class='map'>",
                           "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=15&size=300x300&sensor=false'>",
-                          "</li>",
+                          "</li>"
                         ]
 
       return html_array.join("");
@@ -65,7 +148,6 @@ var recommendationsView = {
       // Compiles the HTML to load into the DOM
       this.$element = $( this.template() );
       $('#site_container').append(this.$element);
-      console.log(this.$element+" appended")
     }
 
     this.render();
