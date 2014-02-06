@@ -48,6 +48,20 @@ var recommendationsView = {
     // Applies that unique ID to a <ul>
     var $ul = $("<ul>").addClass("list").attr("id",smoosh);
 
+    // Add Event Handler
+    $ul.on('click', function(event) {
+      var $hidden = $(this);
+      var $moreContent = $hidden.find('div.more_info_junk');
+
+      if ($(window).width() < 480) {
+        if ($hidden.find('div.more_info_junk').hasClass("hide")){
+          $moreContent.removeClass("hide");
+        } else {
+          $moreContent.addClass("hide");
+        }
+      }
+    });
+
     // Creates a jQuery lookup to the unique ID
     var smooshId = '#'+smoosh;
 
@@ -71,8 +85,8 @@ var recommendationsView = {
                           "</div>",
                         "</li>",
                         "<li>",
-                          "<button class='more_info_button' id="+smoosh+">",
-                            "===",
+                          "<button class='more_info_button btn btn-info btn-sm' id='"+smoosh+"_button'>",
+                            "Info",
                           "</button>",
                         "</li>",
                         "<br/>"
@@ -86,25 +100,23 @@ var recommendationsView = {
       this.$element = $( this.template() );
       $("#site_container").prepend($ul);
       $ul.append(this.$element);
-      // this.buttonWatcher();
-    }
+      var $button = $('#'+smoosh+'_button');
 
-    this.buttonWatcher = function() {
-      // Add Event Handler
-      $more_info_button.on('click', function(event) {
-
-        btn_id = event.target["id"];
-
-        var $hidden_info = $('div.more_info_junk#'+btn_id);
+      $button.on('click', function(event) {
+        if ($(window).width() > 480) {
+          btn_id_button = event.target["id"];
+          btn_id = btn_id_button.replace('_button','');
+          var $hidden_info = $('div.more_info_junk#'+btn_id);
 
           if (($hidden_info).hasClass("hide")){
             $($hidden_info).removeClass("hide");
           } else {
             $($hidden_info).addClass("hide");
           }
-
+        }
       });
-    }
+
+    },
 
     this.render();
 
@@ -123,14 +135,11 @@ var recommendationsView = {
 
       var html_array = [
                         "<ul class='more_info'>",
-                          "<li class='location'>",
-                          "<strong>"+self.rec.address+'</strong>, '+self.rec.city+' '+self.rec.cross_streets,
-                          "</li>",
                           "<li class='phone_num'>",
-                          self.rec.phone_num,
+                            "<a href='tel:'"+self.rec.phone_num+"'>"+self.rec.phone_num+"</a>",
                           "</li>",
                           "<li class='map'>",
-                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=15&size=300x300&sensor=false'>",
+                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
                           "</li>"
                         ]
 
