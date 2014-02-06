@@ -198,3 +198,9 @@ li.more_info_button {
   color: #191919;
   text-decoration: line-through;
 }
+
+
+@media (max-width: 480px) {
+  .more_info_button { display: none;}
+  .list { border: solid black 1px; padding: 10px; background: #fff;}
+}
