@@ -24,9 +24,9 @@ form {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 20px;
 	color: white;
-	transform:rotate(107deg);
-	-ms-transform:rotate(107deg); /* IE 9 */
-	-webkit-transform:rotate(107deg); /* Safari and Chrome */
+	transform:rotate(310deg);
+	-ms-transform:rotate(310deg); /* IE 9 */
+	-webkit-transform:rotate(310deg); /* Safari and Chrome */
 
 }
 
@@ -134,7 +134,7 @@ ul {
 
 li {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-align: center;
+ /* text-align: center;*/
 }
 
 li.name {
@@ -143,6 +143,11 @@ li.name {
 
 li.more_info_button {
   text-align: center;
+}
+
+.more_info {
+  color: #e6e6e6;
+  text-align: left;
 }
 
 .site-container {

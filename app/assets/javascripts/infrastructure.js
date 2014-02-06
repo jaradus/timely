@@ -75,15 +75,15 @@ var sendUserData = function sendUserData(params) {
       console.log("Data returned from Yelp");
 
       // Calls the Yelp Review render on success
-      var yelp_recommendations = data;
-      recommendationsView.initialize(yelp_recommendations);
+      // var yelp_recommendations = data;
+      // recommendationsView.initialize(yelp_recommendations);
 
       // var list_data = data;
       //testing to see if object gets passed to renderYelpItem function
-      // data.forEach(function(yelp_item_attr) {
-      //   var ul = renderYelpItem(yelp_item_attr);
-      //   $("#site_container").prepend(ul);
-      // });
+      data.forEach(function(yelp_item_attr) {
+        var ul = renderYelpItem(yelp_item_attr);
+        $("#site_container").prepend(ul);
+      });
 
     }
   });
