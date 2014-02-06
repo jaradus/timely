@@ -34,6 +34,10 @@ img {
   font-size: 1em;
 }
 
+.more_info {
+  padding-left: 0;
+}
+
 main {
   margin-top: 0px;
 }
