@@ -1,9 +1,8 @@
 var renderYelpItem = function(item){
-	var smoosh = 'a'+item.location.replace(/\s/g,"");
-	//var $div  = $("#site_container");
-	var $ul = $("<ul>").addClass("list").attr("id",smoosh);
 
-	// var $image = $("<img>").attr("src", item.image_url);
+	var smoosh = 'a'+item.location.replace(/\s/g,"");
+
+	var $ul = $("<ul>").addClass("list").attr("id",smoosh);
 
 	var $name_li = $("<li>").addClass("name").text(item.name);
 	var $address_li = $("<li>").addClass("address").text(item.location);
@@ -14,12 +13,6 @@ var renderYelpItem = function(item){
 	var $hidden_info = $("<li>").append($("<div>").addClass("more_info_junk").addClass("hide").attr("id", smoosh).text("MORE INFO HERE OK"));
 	var $more_info_button = $("<li>").append($("<button>").addClass("more_info_button").attr("id",smoosh).text("==="));
 
-	//should hide until user clicks on 'more info' button
-	//var $review_li = $("<li>").addClass("phone_number").text(item.review);
-
-	var smooshId = '#'+smoosh;
-
-// slidetoggle <-- lookitup
 
 	$more_info_button.on('click', function(event) {
 		if ($(window).width() > 480) {
@@ -50,11 +43,6 @@ var renderYelpItem = function(item){
 			}
 		}
 	});
-
-	// remove the button when browswer width < 480
-	if ($(window).width() < 480) {
-		// hide the button
-	};
 
 $ul
 .append($name_li)
