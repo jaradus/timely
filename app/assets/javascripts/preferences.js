@@ -152,14 +152,17 @@ var pref = {
 
     // Add event handler to the entire tab content div
     pref.$tabContent.on('click', function(event) {
-        console.log($(event.target).data().id);
         // Retrieves the div's unique ID as located in the db
         var id_of_keyword_to_delete = $(event.target).data();
         if (id_of_keyword_to_delete.id) {
           pref.destroyKeyword(id_of_keyword_to_delete);
-        } else {
-          console.log("Where'd u click");
         };
+        if ($(event.target).hasClass("btn")) {
+          var $submit_button = $(event.target);
+          var $submit_input = $submit_button.parent().children()[0];
+          var $submit_input_content = $($submit_input).val();
+          
+        }
 
     });
 
