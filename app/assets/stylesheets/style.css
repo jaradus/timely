@@ -220,7 +220,7 @@ li.more_info_button {
   text-decoration: line-through;
 }
 
-@media (max-width: 691px;) {
+@media (max-width: 691px) {
 /* at 691px, the nav text should be centered */
 
 }
