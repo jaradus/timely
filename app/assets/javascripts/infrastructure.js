@@ -117,6 +117,20 @@ $( window ).scroll(function() {
 
 
 
+if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", function () {
+        console.log(beta);
+        //tilt([event.beta, event.gamma]);
+    }, true);
+}
+
+
+
+
+
+
+
+
 
 
 
