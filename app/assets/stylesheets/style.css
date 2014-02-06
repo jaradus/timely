@@ -24,6 +24,15 @@ form {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 20px;
 	color: white;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-right: 78px;
+  padding-left: 75px;
+  margin-left: -77px;
+  margin-top: 10px;
+  background-color: #ffcc66;
+  border: 1px #191919 dotted;
+  color: #191919;
 	transform:rotate(310deg);
 	-ms-transform:rotate(310deg); /* IE 9 */
 	-webkit-transform:rotate(310deg); /* Safari and Chrome */
