@@ -43,6 +43,7 @@ var recommendationsView = {
       var google_map_formatted_city = self.rec.city.replace(' ','+');
       var google_map_formatted_state_code = self.rec.state_code.replace(' ','+');
       var google_location = google_map_formatted_address+','+google_map_formatted_city+','+google_map_formatted_state_code;
+      console.log(google_location)
 
       var html_array = [
                         "<ul class='more_info'>",
@@ -53,7 +54,7 @@ var recommendationsView = {
                           self.rec.phone_num,
                           "</li>",
                           "<li class='map'>",
-                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+google_location+"&zoom=15&size=300x300&sensor=false'>",
+                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=15&size=300x300&sensor=false'>",
                           "</li>",
                         ]
 
