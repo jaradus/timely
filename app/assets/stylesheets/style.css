@@ -61,12 +61,11 @@ form {
 .TimelyLogo{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 20px;
-	color: white;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 78px;
   padding-left: 75px;
-  margin-left: -77px;
+  margin-left: -213px;
   margin-top: 10px;
   background-color: #ffcc66;
   border: 1px #191919 dotted;
@@ -236,14 +235,27 @@ li.more_info_button {
   text-decoration: line-through;
 }
 
-@media (max-width: 691px) {
-/* at 691px, the nav text should be centered */
-
-}
-
 @media (max-width: 480px) {
+  .TimelyLogo{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.9em;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 97px;
+    margin-top: -9px;
+    background-color: #282a64;
+    border: 0px;
+    color: #66ffff;
+    transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* IE 9 */
+    -webkit-transform:rotate(0deg); /* Safari and Chrome */
+  }
+
   .list {
     font-size: 12px;
+    max-width: 100%;
   }
   .more_info_button { display: none;}
 }
