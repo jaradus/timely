@@ -4,20 +4,35 @@ var recommendationsView = {
   // $("#site_container").prepend(ul);
 
   initialize: function(yelp_recommendations) {
+
     var pageElements = {
                         $loading: $('loading_screen'),
                         $page:    $('#site_container')  
                         };
 
-    $(yelp_recommendations).each(function(){
-      // Creates a local instance of the recommendation
-      rec = new recommendationsView.Recommendation(this);
+    // Get Google Maps API Key and renders the page
+    recommendationsView.getMapKey(yelp_recommendations);
+  
+  },
 
-      // Renders the recommendation on the DOM
-      console.log('Render called');
-      new recommendationsView.RecommendationView(rec);
-    })
+  getMapKey: function(yelp_recommendations){
+    $.ajax({
+      url: '/map_reference',
+      method: 'get',
+      success: function(data){
+        recommendationsView.env_google_api_key = data.key;
 
+        $(yelp_recommendations).each(function(){
+
+          // Creates a local instance of the recommendation
+          rec = new recommendationsView.Recommendation(this);
+
+          // Renders the recommendation on the DOM
+          console.log('Render called');
+          new recommendationsView.RecommendationView(rec);
+        });
+      }
+    });
   },
 
   Recommendation: function(raw_api_data){
@@ -133,7 +148,6 @@ var recommendationsView = {
       var google_map_formatted_state_code = self.rec.state_code.replace(' ','+');
       var google_location = google_map_formatted_address+','+google_map_formatted_city+','+google_map_formatted_state_code;
       var mobile_compatible_number = self.rec.phone_num.replace(/\+/g,'');
-      console.log(mobile_compatible_number)
 
       if (self.rec.phone_num) {
         var html_array = [
@@ -142,7 +156,7 @@ var recommendationsView = {
                             "<a href='tel:"+mobile_compatible_number+"'><i class='fa fa-mobile'></i> "+self.rec.phone_num+"</a>",
                           "</li>",
                           "<li class='map'>",
-                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
+                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&key="+recommendationsView.env_google_api_key+"&sensor=false'>",
                           "</li>",
                         "</ul>"
                         ]
@@ -150,7 +164,7 @@ var recommendationsView = {
         var html_array = [
                         "<ul class='more_info'>",
                           "<li class='map'>",
-                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
+                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&key="+recommendationsView.env_google_api_key+"&sensor=false'>",
                           "</li>",
                         "</ul>"
                         ]

@@ -7,6 +7,15 @@ class HomeController < ApplicationController
   	
   end
 
+  def google_api
+    google_api_key = ENV["GOOGLE_API_KEY"]
+
+    @key = {key: google_api_key}
+
+    render json: @key
+
+  end
+
   def api_call
     latitude   = params[:latitude].to_f
     longitude  = params[:longitude].to_f

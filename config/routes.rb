@@ -13,6 +13,8 @@ Timely::Application.routes.draw do
   get '/user/preferences' => 'user#preferences', as: 'edit_user_preferences'
   get '/user/id' => 'user#user_id'
 
+  get '/map_reference' => 'home#google_api'
+
   root to: 'home#index'
 
   get '/scooterTest' => 'home#scooterTest'

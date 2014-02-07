@@ -17,16 +17,11 @@ var app = app || {
     // local_time is set by time_check.js
     this.local_time
     this.elements = {
-      // $location: $('#location'),
-      // $device: $('#device'),
       $alert: $('.alert')
     }
 
     getLocation();
     this.local_time = timeCheck();
-    // setRender() renders a page depending upon the browser screen. Keep commented out to load one main page.
-    // setRender();
-    console.log("Page rendered");
   }
 }
 
@@ -38,8 +33,6 @@ var getLocation = function() {
     navigator.geolocation.getCurrentPosition(function(position) {
       app.latitude = position.coords.latitude;
       app.longitude = position.coords.longitude;
-      console.log("Latitude "+app.latitude);
-      console.log("Longitude "+app.longitude);
       // CALLBACK: Sends the AJAX call to the controller
       sendLocation(app.latitude, app.longitude, app.local_time);
       })
@@ -51,8 +44,6 @@ var getLocation = function() {
 }
 
 var sendLocation = function(lat, lon, time) {
-  console.log(lat+", "+lon+", "+time);
-  
   var params = {
             latitude: lat,
             longitude: lon,
@@ -71,20 +62,9 @@ var sendUserData = function sendUserData(params) {
     data: params,
     // success: getYelp()
     success: function(data){
-      // Return from the Yelp API call
-      console.log("Data returned from Yelp");
-
       // Calls the Yelp Review render on success
       var yelp_recommendations = data;
       recommendationsView.initialize(yelp_recommendations);
-
-      // var list_data = data;
-      //testing to see if object gets passed to renderYelpItem function
-      // data.forEach(function(yelp_item_attr) {
-      //   var ul = renderYelpItem(yelp_item_attr);
-      //   $("#site_container").prepend(ul);
-      // });
-
     }
   });
 }

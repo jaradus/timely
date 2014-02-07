@@ -16,7 +16,6 @@ var timeCheck = function timeCheck() {
 
   // Concatenates the hour and minutes into one string
   var time = hour.toString() + minutes.toString();
-  console.log(time);
   return time
 
 }
