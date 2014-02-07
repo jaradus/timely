@@ -11,6 +11,6 @@ class UserMailer < ActionMailer::Base
 
     @user = user
     @url  = 'http://cherry-timely.herokuapp.com'
-    mail(to: @user.email, subject: 'Welcome to Mailing App Demo!!!!')
+    mail(to: @user.email, subject: 'Welcome to Timely!')
   end
 end
