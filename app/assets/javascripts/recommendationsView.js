@@ -43,7 +43,7 @@ var recommendationsView = {
     this.rec.view = self;
 
     // Creates a flattened street address, with 'a' prepended to create a unique ID
-    var smoosh = 'a'+self.rec.address.replace(/\s/g,"");
+    var smoosh = self.rec.name.toLowerCase().replace(/\s/g,"")+self.rec.address.replace(/\s/g,"");
 
     // Applies that unique ID to a <ul>
     var $ul = $("<ul>").addClass("list").attr("id",smoosh);
