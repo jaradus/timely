@@ -279,6 +279,11 @@ li.more_info_button {
     font-size: 12px;
     max-width: 100%;
   }
+
+  div.devise {
+    background-color: transparent;
+  }
+
   .more_info_button { display: none;}
 
   #morningTab {border-radius: 4px; background-color: #141D36;}
