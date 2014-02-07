@@ -17,13 +17,9 @@ body {
 
 }
 
-
 #main_container{
 	z-index: 1;
 }
-
-.navbar { margin-bottom: 0px; }
-
 
 main {
   margin-top: 0px;
@@ -223,5 +219,3 @@ li.more_info_button {
   }
   .more_info_button { display: none;}
 }
-
-
