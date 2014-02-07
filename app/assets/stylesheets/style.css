@@ -17,12 +17,24 @@ html {
 
 }*/
 
+#main_id{
+	padding-bottom: 0px;
+}
+
 img {
   margin-left: 0;
 }
 
+li.map{
+	width: 300px;
+	height: 300px;
+}
+
 #main_container{
 	z-index: 1;
+	overflow: scroll;
+	height: 800px;
+
 }
 
 .navbar { margin-bottom: 0px; }
@@ -232,5 +244,14 @@ li.more_info_button {
   }
   .more_info_button { display: none;}
 }
+
+/*.container{
+	overflow: hidden;
+}
+
+.sun{
+	position: absolute;
+}
+*/
 
 
