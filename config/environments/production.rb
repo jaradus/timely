@@ -79,8 +79,8 @@ config.action_mailer.smtp_settings = {
     :address => "smtp.mailgun.org",
     :port => 587,
     :domain => "cherry-timely.herokuapp.com",
-    :user_name => ENV['MAILGUN_USERNAME_TIMELY'],
-    :password => ENV['MAILGUN_PASSWORD_TIMELY']
+    :user_name => ENV['MAILGUN_SMTP_LOGIN'],
+    :password => ENV['MAILGUN_SMTP_PASSWORD']
 }
 
 end
