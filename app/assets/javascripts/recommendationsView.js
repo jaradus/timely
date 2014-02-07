@@ -132,12 +132,14 @@ var recommendationsView = {
       var google_map_formatted_city = self.rec.city.replace(' ','+');
       var google_map_formatted_state_code = self.rec.state_code.replace(' ','+');
       var google_location = google_map_formatted_address+','+google_map_formatted_city+','+google_map_formatted_state_code;
+      var mobile_compatible_number = self.rec.phone_num.replace(/\+/g,'');
+      console.log(mobile_compatible_number)
 
       if (self.rec.phone_num) {
         var html_array = [
                         "<ul class='more_info'>",
                           "<li class='phone_num'>",
-                            "<a href='tel:'"+self.rec.phone_num+"'><i class='fa fa-mobile'></i> "+self.rec.phone_num+"</a>",
+                            "<a href='tel:"+mobile_compatible_number+"'><i class='fa fa-mobile'></i> "+self.rec.phone_num+"</a>",
                           "</li>",
                           "<li class='map'>",
                           "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
