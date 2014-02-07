@@ -10,12 +10,11 @@ html {
   -o-transform: rotate(-180deg);
 }
 
-/*body { 
+body { 
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
-
-}*/
+}
 
 img {
   margin-left: 0;
@@ -73,6 +72,11 @@ form {
 	transform:rotate(310deg);
 	-ms-transform:rotate(310deg); /* IE 9 */
 	-webkit-transform:rotate(310deg); /* Safari and Chrome */
+}
+
+.TimelyLogo:hover {
+  background-color: #66ccff;
+  color: #191919;
 }
 
 div#error_explanation h3 {
@@ -156,7 +160,12 @@ div.checkboxupperspacing {
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #e6e6e6;
+	color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #66ffcc;
+  background-color: transparent;
 }
 
 main {
