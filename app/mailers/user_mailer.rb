@@ -5,10 +5,12 @@ class UserMailer < ActionMailer::Base
   # with the following lookup:
   #
   #   en.user_mailer.greetings.subject
-  #
-  def greetings
-    @greeting = "Hi"
+  #   ExampleMailer.example_message().deliver
+  #   UserMailer.greetings(current_user).deliver
+  def greetings(user)
 
-    mail to: "to@example.org"
+    @user = user
+    @url  = 'http://cherry-timely.herokuapp.com'
+    mail(to: @user.email, subject: 'Welcome to Mailing App Demo!!!!')
   end
 end

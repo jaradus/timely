@@ -5,6 +5,8 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
   	super
+  	UserMailer.greetings(current_user).deliver
+  	
 		morning = ["breakfast", "bagel", "coffee"]
 		noon = ["lunch", "burgers", "salads"]
 		afternoon = ["coffee", "tea", "crumpets", "petit fours"]
