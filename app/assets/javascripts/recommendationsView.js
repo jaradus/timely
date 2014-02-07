@@ -51,10 +51,10 @@ var recommendationsView = {
     // Add Event Handler
     $ul.on('click', function(event) {
       var $hidden = $(this);
-      var $moreContent = $hidden.find('div.more_info_junk');
+      var $moreContent = $hidden.find('div.more_info_panel');
 
       if ($(window).width() < 480) {
-        if ($hidden.find('div.more_info_junk').hasClass("hide")){
+        if ($hidden.find('div.more_info_panel').hasClass("hide")){
           $moreContent.removeClass("hide");
         } else {
           $moreContent.addClass("hide");
@@ -80,7 +80,7 @@ var recommendationsView = {
                           "<img src='"+self.rec.medium_stars_url+"'>",
                         "</li>",
                         "<li>",
-                          "<div class='more_info_junk hide' id='"+smoosh+"'>",
+                          "<div class='more_info_panel hide' id='"+smoosh+"'>",
                             recommendationsView.RecommendationMoreInfoView(this.rec),
                           "</div>",
                         "</li>",
@@ -106,7 +106,7 @@ var recommendationsView = {
         if ($(window).width() > 480) {
           btn_id_button = event.target["id"];
           btn_id = btn_id_button.replace('_button','');
-          var $hidden_info = $('div.more_info_junk#'+btn_id);
+          var $hidden_info = $('div.more_info_panel#'+btn_id);
 
           if (($hidden_info).hasClass("hide")){
             $($hidden_info).removeClass("hide");
@@ -133,15 +133,27 @@ var recommendationsView = {
       var google_map_formatted_state_code = self.rec.state_code.replace(' ','+');
       var google_location = google_map_formatted_address+','+google_map_formatted_city+','+google_map_formatted_state_code;
 
-      var html_array = [
+      if (self.rec.phone_num) {
+        var html_array = [
                         "<ul class='more_info'>",
                           "<li class='phone_num'>",
-                            "<a href='tel:'"+self.rec.phone_num+"'>"+self.rec.phone_num+"</a>",
+                            "<a href='tel:'"+self.rec.phone_num+"'><i class='fa fa-mobile'></i> "+self.rec.phone_num+"</a>",
                           "</li>",
                           "<li class='map'>",
                           "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
-                          "</li>"
+                          "</li>",
+                        "</ul>"
                         ]
+      } else {
+        var html_array = [
+                        "<ul class='more_info'>",
+                          "<li class='map'>",
+                          "<img src='http://maps.googleapis.com/maps/api/staticmap?center="+app.latitude+','+app.longitude+"&markers=color:blue|"+google_location+"&markers=color:green|"+app.latitude+','+app.longitude+"&zoom=14&size=300x300&sensor=false'>",
+                          "</li>",
+                        "</ul>"
+                        ]
+      }
+      
 
       return html_array.join("");
     },

@@ -37,4 +37,21 @@ Timely::Application.configure do
 
   # For Devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
+    #If you want to see delivery errors
+  config.action_mailer.raise_delivery_errors = true
+
+  #What email protical will you use?
+  config.action_mailer.delivery_method = :smtp
+
+config.action_mailer.smtp_settings = {
+    :authentication => :plain,
+    :address => "smtp.mailgun.org",
+    :port => 587,
+    :domain => "cherry-timely.herokuapp.com",
+    :user_name => ENV['MAILGUN_USERNAME_TIMELY'],
+    :password => ENV['MAILGUN_PASSWORD_TIMELY']
+}
+
 end
