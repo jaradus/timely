@@ -10,17 +10,52 @@ html {
   -o-transform: rotate(-180deg);
 }
 
-body { 
+/*body { 
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
 
+}*/
+
+<<<<<<< HEAD
+=======
+img {
+  margin-left: 0;
 }
 
+>>>>>>> aea9c9a6a57193363873612c536fda349c7848e9
 #main_container{
 	z-index: 1;
 }
 
+<<<<<<< HEAD
+=======
+.navbar { margin-bottom: 0px; }
+
+.more_info_button.btn {
+  margin-top: 5px;
+  padding-left: 28px;
+  padding-right: 28px;
+  font-size: 1em;
+}
+
+.more_info {
+  padding-left: 0;
+}
+
+.phone_num {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.phone_num a {
+  color: #0095fd;
+  font-size: 1.1em;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+>>>>>>> aea9c9a6a57193363873612c536fda349c7848e9
 main {
   margin-top: 0px;
 }
@@ -32,12 +67,11 @@ form {
 .TimelyLogo{
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 20px;
-	color: white;
   padding-top: 8px;
   padding-bottom: 8px;
   padding-right: 78px;
   padding-left: 75px;
-  margin-left: -77px;
+  margin-left: -213px;
   margin-top: 10px;
   background-color: #ffcc66;
   border: 1px #191919 dotted;
@@ -45,7 +79,6 @@ form {
 	transform:rotate(310deg);
 	-ms-transform:rotate(310deg); /* IE 9 */
 	-webkit-transform:rotate(310deg); /* Safari and Chrome */
-
 }
 
 div#error_explanation h3 {
@@ -208,14 +241,27 @@ li.more_info_button {
   text-decoration: line-through;
 }
 
-@media (max-width: 691px;) {
-/* at 691px, the nav text should be centered */
-
-}
-
 @media (max-width: 480px) {
+  .TimelyLogo{
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.9em;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-left: 97px;
+    margin-top: -9px;
+    background-color: #282a64;
+    border: 0px;
+    color: #66ffff;
+    transform:rotate(0deg);
+    -ms-transform:rotate(0deg); /* IE 9 */
+    -webkit-transform:rotate(0deg); /* Safari and Chrome */
+  }
+
   .list {
     font-size: 12px;
+    max-width: 100%;
   }
   .more_info_button { display: none;}
 }
