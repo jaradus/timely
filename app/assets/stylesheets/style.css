@@ -32,7 +32,7 @@ li.map{
 #main_container{
 	z-index: 1;
 	overflow: scroll;
-	height: 800px;
+	/*height: 800px;*/
 
 }
 

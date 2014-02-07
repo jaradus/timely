@@ -2,8 +2,8 @@
     overflow:hidden;
 }*/
 #clouds, #sky, #night, #stars{
-    position:fixed;
-            background-attachment: fixed;
+    position:absolute;
+/*            background-attachment: fixed;*/
     top:0px;
     left:0px;
     right:0px;
@@ -44,11 +44,11 @@
 }
 #clouds{
     background:transparent url("../assets/clouds.png") repeat-x top left;
-            background-attachment: fixed;
     z-index:-4;
+ 
 }
 #ground{
-    position:fixed;
+    position:absolute;
     left:0px;
     right:0px;
     bottom:0px;
