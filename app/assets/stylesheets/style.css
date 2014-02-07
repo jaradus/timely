@@ -16,19 +16,14 @@ body {
 	background-attachment: fixed;
 }
 
-<<<<<<< HEAD
-=======
 img {
   margin-left: 0;
 }
 
->>>>>>> aea9c9a6a57193363873612c536fda349c7848e9
 #main_container{
 	z-index: 1;
 }
 
-<<<<<<< HEAD
-=======
 .navbar { margin-bottom: 0px; }
 
 .more_info_button.btn {
@@ -54,7 +49,6 @@ img {
   border-radius: 5px;
 }
 
->>>>>>> aea9c9a6a57193363873612c536fda349c7848e9
 main {
   margin-top: 0px;
 }
