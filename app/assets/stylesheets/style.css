@@ -16,12 +16,24 @@ body {
 	background-attachment: fixed;
 }
 
+#main_id{
+	padding-bottom: 0px;
+}
+
 img {
   margin-left: 0;
 }
 
+li.map{
+	width: 300px;
+	height: 300px;
+}
+
 #main_container{
 	z-index: 1;
+	overflow: scroll;
+	height: 800px;
+
 }
 
 .navbar { margin-bottom: 0px; }
@@ -268,4 +280,10 @@ li.more_info_button {
     max-width: 100%;
   }
   .more_info_button { display: none;}
+
+  #morningTab {border-radius: 4px; background-color: #141D36;}
+  #noonTab {border-radius: 4px; background-color: #192545;}
+  #afternoonTab {border-radius: 4px; background-color: #1E2B52;}
+  #eveningTab {border-radius: 4px; background-color: #253666;}
+  #nightTab {border-radius: 4px; background-color: #2B3F75;}
 }

@@ -2,13 +2,14 @@
     overflow:hidden;
 }*/
 #clouds, #sky, #night, #stars{
-    position:absolute;
+    position:fixed;
             background-attachment: fixed;
     top:0px;
     left:0px;
     right:0px;
     bottom:0px;
     width:100%;
+
 }
 #sky{
     background:#fff url("../assets/sky.png") repeat-x top left;
@@ -47,19 +48,21 @@
     z-index:-4;
 }
 #ground{
-    position:absolute;
+    position:fixed;
     left:0px;
     right:0px;
     bottom:0px;
     width:100%;
     height:232px;
     background:transparent url("../assets/ground.png") repeat-x bottom center;
+            background-attachment: fixed;
     z-index:-4;
 }
 #night{
     background-color:#000;
     z-index:-3;
     opacity:0;
+position: fixed;
     filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
 #stars{
