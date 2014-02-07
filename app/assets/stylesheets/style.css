@@ -10,26 +10,21 @@ html {
   -o-transform: rotate(-180deg);
 }
 
-/*body { 
+body { 
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
 
-}*/
+}
 
-<<<<<<< HEAD
-=======
 img {
   margin-left: 0;
 }
 
->>>>>>> aea9c9a6a57193363873612c536fda349c7848e9
 #main_container{
 	z-index: 1;
 }
 
-<<<<<<< HEAD
-=======
 .navbar { margin-bottom: 0px; }
 
 .more_info_button.btn {
@@ -55,7 +50,6 @@ img {
   border-radius: 5px;
 }
 
->>>>>>> aea9c9a6a57193363873612c536fda349c7848e9
 main {
   margin-top: 0px;
 }
@@ -264,4 +258,10 @@ li.more_info_button {
     max-width: 100%;
   }
   .more_info_button { display: none;}
+
+  #morningTab {border-radius: 4px; background-color: #141D36;}
+  #noonTab {border-radius: 4px; background-color: #192545;}
+  #afternoonTab {border-radius: 4px; background-color: #1E2B52;}
+  #eveningTab {border-radius: 4px; background-color: #253666;}
+  #nightTab {border-radius: 4px; background-color: #2B3F75;}
 }
