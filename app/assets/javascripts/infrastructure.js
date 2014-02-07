@@ -115,7 +115,7 @@ $( window ).scroll(function() {
 
 
 
-
+/////////////////////////take out this
 
 if (window.DeviceOrientationEvent) {
     window.addEventListener("deviceorientation", function () {
