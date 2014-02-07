@@ -223,10 +223,11 @@ li.more_info_button {
 }
 
 .list {
-	background-color: rgba(255,255,255,0.30);
+	background-color: rgba(255,255,255,0.40);
 	border-radius: 15px;
 	max-width: 70%;
   padding: 10px;
+  color: #191919;
 }
 
 .tab-content {
