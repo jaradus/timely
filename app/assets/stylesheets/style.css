@@ -14,15 +14,26 @@ body {
 	background-image: url('/assets/background.jpg'); 
 	background-size: cover;
 	background-attachment: fixed;
+}
 
+#main_id{
+	padding-bottom: 0px;
 }
 
 img {
   margin-left: 0;
 }
 
+li.map{
+	width: 300px;
+	height: 300px;
+}
+
 #main_container{
 	z-index: 1;
+	overflow: scroll;
+	height: 800px;
+
 }
 
 .navbar { margin-bottom: 0px; }
@@ -73,6 +84,11 @@ form {
 	transform:rotate(310deg);
 	-ms-transform:rotate(310deg); /* IE 9 */
 	-webkit-transform:rotate(310deg); /* Safari and Chrome */
+}
+
+.TimelyLogo:hover {
+  background-color: #66ccff;
+  color: #191919;
 }
 
 div#error_explanation h3 {
@@ -156,7 +172,12 @@ div.checkboxupperspacing {
 }
 
 .navbar-default .navbar-nav > li > a {
-	color: #e6e6e6;
+	color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: #66ffcc;
+  background-color: transparent;
 }
 
 main {

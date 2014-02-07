@@ -107,8 +107,10 @@ $(function(){
 
 $( window ).scroll(function() {
   var scroll = $(window).scrollTop();
-  $("header").css("height", 100 - 1.5*scroll);
+  $("header").css({"backgroundColor": "#282a64", "height": 50 - 2*scroll});
 });
+
+
 
 
 
